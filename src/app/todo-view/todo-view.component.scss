@@ -1,0 +1,12 @@
+.card {
+  box-shadow: 0 0 1.25rem rgba(31, 45, 61, 0.036);
+  border: 0 !important;
+  border-radius: 10px;
+  transition: background .2s ease-in-out;
+  height: max-content;
+  min-height: 240px;
+
+  &-body {
+    padding: 25px;
+  }
+}

@@ -1,0 +1,14 @@
+<div class="card" *ngIf="todoList">
+  <div class="card-body">
+    <div class="todo-list" *ngFor="let todo of todoList">
+      <input type="checkbox" class="" id="task1">
+      <span class="">{{todo.text}}</span>
+      <i class="fas fa-edit"></i>
+      <i class="fas fa-trash"></i>
+    </div>
+  </div>
+</div>
+
+<div class="card card--empty" *ngIf="!todoList">
+  <i class="fas fa-duotone fa-trash"></i>
+</div>
