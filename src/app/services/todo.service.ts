@@ -11,8 +11,9 @@ import { Observable } from 'rxjs';
 })
 export class TodoService {
   todos: Todo[] = [];
-
-  private REST_API_SERVER:String = "http://localhost:3000";
+  private REST_API_SERVER: String = "http://localhost:3000";
+  
+  isOpenTodoModal: boolean = false;
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -30,7 +31,11 @@ export class TodoService {
   }
 
   addTodo(){
-   
+    
+  }
+
+  openTodoModal() {
+    
   }
   
 
