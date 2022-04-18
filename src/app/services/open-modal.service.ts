@@ -1,14 +1,15 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter, Output } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OpenModalService {
-  isModalOpen: boolean = true;
+  @Output() openTodoModalEvent = new EventEmitter<boolean>();
 
-  constructor() { }
+  constructor() {}
 
-  openModal() {
-    return this.isModalOpen = true;
+  modalBehaviorFun(event: boolean) {
+    this.openTodoModalEvent.emit(event);
   }
+
 }
