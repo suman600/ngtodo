@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OpenModalService } from '../services/open-modal.service';
+import { FormControl } from '@angular/forms'
 
 @Component({
   selector: 'app-todo-add-update',

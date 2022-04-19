@@ -3,18 +3,18 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">New Task</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" (click)="closeTodoModal()" class="close" data-dismiss="modal" aria-label="Close">
           <i class="fas fa-close"></i>
         </button>
       </div>
       <div class="modal-body">
-        <input type="text" class="todo-input" id="new-task-name" placeholder="Task Name" />
+        <form [formGroup]="todoForm" (ngSubmit)="onSubmit()">
+          <input type="text" class="todo-input" id="new-task-name" placeholder="Task Name" />
+        </form>
       </div>
       <div class="modal-footer">
-        <button (click)="closeTodoModal()" type="button" class="btn btn-secondary">
-          Cancel
-        </button>
-        <button type="button" class="btn btn-primary">Add</button>
+        <button (click)="closeTodoModal()" type="button" class="btn btn-secondary">Cancel</button>
+        <button (click)="onSubmit()" type="submit" class="btn btn-primary">Add</button>
       </div>
     </div>
   </div>
