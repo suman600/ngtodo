@@ -36,7 +36,7 @@ export class TodoAddUpdateComponent implements OnInit {
 
   getTodos() {
     this.todoService.getTodo()
-    .subscribe((data: Todo) => this._todos = { ...data });
+    // .subscribe((data: Todo) => this._todos = { ...data });
   }
 
   
