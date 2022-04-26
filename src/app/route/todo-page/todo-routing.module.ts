@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 import { TodoComponent } from './components/todo.component'
 
 const routes: Routes = [
@@ -11,8 +10,6 @@ const routes: Routes = [
 ];
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule
-  ]
+  imports: [RouterModule.forChild(routes)],
 })
 export class TodoRoutingModule { }

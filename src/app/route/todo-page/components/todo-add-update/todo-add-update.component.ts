@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { OpenModalService } from '../services/open-modal.service';
+import { OpenModalService } from '../../../../services/modal-service/open-modal.service';
 import { FormBuilder, Validators } from '@angular/forms'
 import { Todo } from '../../../../models/todo-model';
 import { TodoService } from '../../../../services/todo-service/todo.service';

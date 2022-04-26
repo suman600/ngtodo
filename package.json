@@ -11,6 +11,7 @@
     "@angular/core": "^13.3.4",
     "@angular/forms": "^13.3.4",
     "@angular/platform-browser": "^13.3.4",
+    "@angular/platform-browser-dynamic": "^13.3.4",
     "@angular/router": "^13.3.4",
     "@ngrx/store": "^13.1.0",
     "next": "^12.1.0",
