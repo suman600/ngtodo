@@ -8,9 +8,16 @@
     "start": "next start"
   },
   "dependencies": {
+    "@angular/core": "^13.3.4",
+    "@angular/forms": "^13.3.4",
+    "@angular/platform-browser": "^13.3.4",
+    "@angular/router": "^13.3.4",
     "@ngrx/store": "^13.1.0",
     "next": "^12.1.0",
     "react": "17.0.1",
     "react-dom": "17.0.1"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^13.3.3"
   }
 }

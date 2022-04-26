@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { OpenModalService } from '../services/open-modal.service';
 import { FormBuilder, Validators } from '@angular/forms'
-import { Todo } from '../heros/todo';
-import { TodoService } from '../services/todo.service';
+import { Todo } from '../../../../models/todo-model';
+import { TodoService } from '../../../../services/todo-service/todo.service';
 
 @Component({
   selector: 'app-todo-add-update',

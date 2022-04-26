@@ -3,7 +3,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { Todo } from '../heros/todo';
+import { Todo } from '../../models/todo-model';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class TodoService {
   todos: Todo[] = [];
+  
   private REST_API_SERVER: String = "http://localhost:3000";
   
   isOpenTodoModal: boolean = false;

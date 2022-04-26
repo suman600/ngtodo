@@ -5,10 +5,10 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 import { AppComponent } from './app.component';
-import { TodoListComponent } from './todo-list/todo-list.component';
-import { TodoViewComponent } from './todo-view/todo-view.component';
-import { TodoAddUpdateComponent } from './todo-add-update/todo-add-update.component';
-import { TodoService } from './services/todo.service';
+import { TodoListComponent } from './route/todo-page/components/todo-list/todo-list.component';
+import { TodoViewComponent } from './route/todo-page/components/todo-view/todo-view.component';
+import { TodoAddUpdateComponent } from './route/todo-page/components/todo-add-update/todo-add-update.component';
+import { TodoService } from './services/todo-service/todo.service';
 
 @NgModule({
   declarations: [
