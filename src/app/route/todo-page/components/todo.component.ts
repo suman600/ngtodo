@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { OpenModalService } from 'src/app/services/modal-service/open-modal.service';
+import { OpenModalService } from '../../../services/modal-service/open-modal.service';
 
 @Component({
   selector: 'app-todo',
