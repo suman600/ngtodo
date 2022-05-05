@@ -8,6 +8,8 @@ import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { TodoViewComponent } from './components/todo-view/todo-view.component';
 import { TodoAddUpdateComponent } from './components/todo-add-update/todo-add-update.component';
 
+import { StoreModule } from '@ngrx/store';
+import { todoReducer } from './application-states/todo.reducer';
 
 
 @NgModule({
@@ -20,7 +22,8 @@ import { TodoAddUpdateComponent } from './components/todo-add-update/todo-add-up
   ],
   imports: [
     CommonModule,
-    TodoRoutingModule
+    TodoRoutingModule,
+    StoreModule.forRoot({todo: todoReducer})
   ]
 })
 export class TodoModule { }

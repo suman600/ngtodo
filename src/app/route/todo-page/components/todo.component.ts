@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { OpenModalService } from '../../../services/modal-service/open-modal.service';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { increment, decrement, reset } from '../application-states/todo.action';
 
 @Component({
   selector: 'app-todo',
@@ -8,12 +10,25 @@ import { OpenModalService } from '../../../services/modal-service/open-modal.ser
 })
 export class TodoComponent implements OnInit {
 
-  constructor(private openModalService: OpenModalService) {}
+  count$: Observable<number>;
+  
+  constructor(private store: Store<{ todo: number }>) {
+    this.count$ = store.select('todo')
+  }
 
   ngOnInit(): void {
   }
 
-  openTodoModal() {
-    this.openModalService.modalBehaviorFun(true);
+  increment() {
+    this.store.dispatch(increment());
   }
+ 
+  decrement() {
+    this.store.dispatch(decrement());
+  }
+ 
+  reset() {
+    this.store.dispatch(reset());
+  }
+
 }

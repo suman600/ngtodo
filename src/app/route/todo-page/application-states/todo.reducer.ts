@@ -1,7 +1,11 @@
-import { Todo } from "../../../models/todo-model";
+import { createReducer, on } from "@ngrx/store";
+import { increment, decrement, reset } from "./todo.action";
 
-import { TodoAction } from "./todo.action";
+export const initialState = 0;
 
-const REST_API_SERVER: String = "http://localhost:3000";
-
-
+export const todoReducer = createReducer(
+    initialState,
+    on(increment, (state) => state + 1),
+    on(decrement, (state) => state - 1),
+    on(reset, (state)=> state = 0),
+)
