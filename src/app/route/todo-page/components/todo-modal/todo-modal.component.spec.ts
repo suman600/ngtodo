@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TodoAddUpdateComponent } from './todo-add-update.component';
+import { TodoAddUpdateComponent } from './todo-modal.component';
 
 describe('TodoAddUpdateComponent', () => {
   let component: TodoAddUpdateComponent;

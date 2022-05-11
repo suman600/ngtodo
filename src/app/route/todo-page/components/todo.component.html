@@ -1,14 +1,7 @@
 <div class="page-layout">
     <div class="card card--action">
-        <button (click)="increment()">Increment</button>
-
-        <div>Current Count: {{ count$ | async }}</div>
-
-        <button (click)="decrement()">Decrement</button>
-
-        <button (click)="reset()">Reset Counter</button>
         <div class="card-body">
-            <button class="btn btn-success btn-block">
+            <button (click)="openTodoModal()" class="btn btn-success btn-block">
                 Create New Task
             </button>
             <div class="todo-action">
@@ -34,4 +27,4 @@
     <app-todo-view></app-todo-view>
 </div>
 
-<app-todo-add-update></app-todo-add-update>
+<app-todo-modal></app-todo-modal>

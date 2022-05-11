@@ -6,24 +6,22 @@ import { TodoComponent } from './components/todo.component';
 
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { TodoViewComponent } from './components/todo-view/todo-view.component';
-import { TodoAddUpdateComponent } from './components/todo-add-update/todo-add-update.component';
+import { TodoModalComponent } from './components/todo-modal/todo-modal.component';
 
 import { StoreModule } from '@ngrx/store';
 import { todoReducer } from './application-states/todo.reducer';
-
 
 @NgModule({
   declarations: [
     TodoComponent,
     TodoListComponent,
     TodoViewComponent,
-    TodoAddUpdateComponent
-
+    TodoModalComponent,
   ],
   imports: [
     CommonModule,
     TodoRoutingModule,
-    StoreModule.forRoot({todo: todoReducer})
-  ]
+    StoreModule.forRoot({ todo: todoReducer }),
+  ],
 })
-export class TodoModule { }
+export class TodoModule {}
