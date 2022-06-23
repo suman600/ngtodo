@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { TodoService } from '../../../../service/todo.service';
 import { TodoItem } from '../../../../models/todo-model';
+import { Observable } from 'rxjs';
+import { select, Store } from '@ngrx/store';
+import { selectLoadTodo } from '../../application-states/todo.selector';
+import { loadTodos, loadTodosSuccess } from '../../application-states/todo.action';
 
 @Component({
   selector: 'app-todo-list',
@@ -7,7 +12,15 @@ import { TodoItem } from '../../../../models/todo-model';
   styleUrls: ['./todo-list.component.scss'],
 })
 export class TodoListComponent implements OnInit {
-  constructor() {}
+  todos$: Observable<TodoItem[]> = this.store.select((state) => state.todo);
 
-  ngOnInit(): void {}
+  constructor(private store: Store<{ todo: TodoItem[] }>) { }
+
+  ngOnInit() {
+    this.store.dispatch({ type: '[TODO_PAGE] Load Todos' });
+
+    this.todos$.subscribe((data) => {
+      console.log(data);
+    });
+  }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { openTodoModal } from '../application-states/todo.action';
+import { todoModalbehavior } from '../application-states/todo.action';
 
 @Component({
   selector: 'app-todo',
@@ -8,15 +8,16 @@ import { openTodoModal } from '../application-states/todo.action';
   styleUrls: ['./todo.component.scss'],
 })
 export class TodoComponent implements OnInit {
-  constructor(private store: Store<{}>) {}
+  constructor(private store: Store<{}>) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   openTodoModal() {
     this.store.dispatch(
-      openTodoModal({
+      todoModalbehavior({
         showModal: true,
-        modalTitle: 'Add Modal',
+        modalTitle: 'Add Todo',
+        modalActionText: 'Suubmit',
       })
     );
   }

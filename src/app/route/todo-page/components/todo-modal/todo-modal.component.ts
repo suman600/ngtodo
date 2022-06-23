@@ -4,7 +4,7 @@ import { TodoItem } from '../../../../models/todo-model';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { selectTodoModal } from '../../application-states/todo.selector';
-import { closeTodoModal } from '../../application-states/todo.action';
+import { todoModalbehavior } from '../../application-states/todo.action';
 
 @Component({
   selector: 'app-todo-modal',
@@ -14,24 +14,27 @@ import { closeTodoModal } from '../../application-states/todo.action';
 export class TodoModalComponent implements OnInit {
   showModal: boolean = false;
   modalTitle: string = '';
-  showModal$ = this.store.select(selectTodoModal);
+  modalActionText: string = '';
+  todoModalBehavior$ = this.store.select(selectTodoModal);
 
   constructor(private store: Store<{}>) {}
 
   ngOnInit(): void {
-    this.showModal$.subscribe({
+    this.todoModalBehavior$.subscribe({
       next: (value) => {
         this.showModal = value.showModal;
         this.modalTitle = value.modalTitle;
+        this.modalActionText = value.modalActionText;
       },
     });
   }
 
   closeTodoModal() {
     this.store.dispatch(
-      closeTodoModal({
+      todoModalbehavior({
         showModal: false,
         modalTitle: '',
+        modalActionText: '',
       })
     );
   }
