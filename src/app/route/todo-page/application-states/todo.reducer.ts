@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { todoModalbehavior, loadTodos } from './todo.action';
+import { todoModalbehavior, loadTodosSuccess, addTodo, } from './todo.action';
 import { TodoModalItem, TodoItem } from '../../../models/todo-model';
 
 export const initialState = {
@@ -30,14 +30,14 @@ const _todoReducer = createReducer(
       return state;
     }
   ),
-  on(loadTodos, (_state, { userId, id, title, completed }) => {
+  on(loadTodosSuccess, (_state, { payload }) => {
     let state = { ..._state };
-    state.loadTodoObj = {
-      userId: userId,
-      id: id,
-      title: title,
-      completed: completed,
-    };
+    state.loadTodoObj = payload;
+    return state;
+  }),
+  on(addTodo, (_state, { userId, id, title, completed }) => {
+    let state = { ..._state };
+
     return state;
   })
 );

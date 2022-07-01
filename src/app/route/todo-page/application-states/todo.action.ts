@@ -11,5 +11,17 @@ export const loadTodos = createAction(
   props<TodoItem>()
 );
 
-export const loadTodosSuccess = createAction('[TODO_PAGE] Load Todos Success');
+export const loadTodosSuccess = createAction(
+  '[TODO_PAGE] Load Todos Success',
+  props<{ payload: TodoItem }>()
+);
 export const loadTodosError = createAction('[TODO_PAGE] Load Todos Error');
+
+export const addTodo = createAction('[TODO_PAGE] Add Todo', props<TodoItem>());
+
+export const addTodoSuccess = createAction(
+  '[TODO_PAGE] Add Todo Success',
+  props<{ payload: TodoItem }>()
+);
+
+export const addTodoError = createAction('[TODO_PAGE] Add Todo Error');

@@ -1,10 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { TodoItem } from '../../../../models/todo-model';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { selectTodoModal } from '../../application-states/todo.selector';
-import { todoModalbehavior } from '../../application-states/todo.action';
+import {
+  selectLoadTodo,
+  selectTodoModal,
+} from '../../application-states/todo.selector';
+import {
+  addTodo,
+  addTodoSuccess,
+  loadTodos,
+  todoModalbehavior,
+} from '../../application-states/todo.action';
 
 @Component({
   selector: 'app-todo-modal',
@@ -17,7 +25,7 @@ export class TodoModalComponent implements OnInit {
   modalActionText: string = '';
   todoModalBehavior$ = this.store.select(selectTodoModal);
 
-  constructor(private store: Store<{}>) {}
+  constructor(private store: Store<{}>, private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.todoModalBehavior$.subscribe({
@@ -27,6 +35,15 @@ export class TodoModalComponent implements OnInit {
         this.modalActionText = value.modalActionText;
       },
     });
+  }
+
+  todoForm = this.fb.group({
+    todoText: ['', Validators.required],
+  });
+
+  onSubmit() {
+    this.todoForm.reset();
+    this.closeTodoModal();
   }
 
   closeTodoModal() {

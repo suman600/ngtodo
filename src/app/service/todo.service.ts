@@ -7,9 +7,13 @@ import { Observable } from 'rxjs';
 export class TodoService {
   private API_URL: string = 'https://jsonplaceholder.typicode.com/todos';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getAllTodo(): Observable<TodoItem[]> {
     return this.http.get<TodoItem[]>(this.API_URL);
+  }
+
+  addTodo(todo: TodoItem): Observable<TodoItem> {
+    return this.http.post<TodoItem>(this.API_URL, todo);
   }
 }

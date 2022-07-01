@@ -17,7 +17,7 @@ export class TodoComponent implements OnInit {
       todoModalbehavior({
         showModal: true,
         modalTitle: 'Add Todo',
-        modalActionText: 'Suubmit',
+        modalActionText: 'Submit',
       })
     );
   }

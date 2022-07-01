@@ -1,21 +1,13 @@
 <div class="card">
-  <!-- <div class="card-body">
-    <div class="todo-list">
-      <input type="checkbox" class="" id="task1" />
-      <span class=""></span>
+  <div class="card-body">
+    <div class="todo-list" *ngFor="let todo of todos">
+      <input type="checkbox" id="{{ todo.id }}" />
+      <span class="">{{ todo.title }}</span>
       <i class="fas fa-edit"></i>
       <i class="fas fa-trash"></i>
     </div>
-  </div> -->
-  <!-- <ul *ngFor="let todo of todos$ | async">
-    <li>{{ todo.userId }}</li>
-    <li>{{ todo.id }}</li>
-    <li>{{ todo.title }}</li>
-    <li>{{ todo.completed }}</li>
-  </ul> -->
-  <!-- </div> -->
-
-  <!-- <div class="card card--empty">
-  <i class="fas fa-duotone fa-trash"></i>
-</div> -->
+  </div>
+  <div class="card card--empty" *ngIf="!todos">
+    <i class="fas fa-duotone fa-trash"></i>
+  </div>
 </div>

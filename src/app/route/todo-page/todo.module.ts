@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TodoRoutingModule } from './todo-routing.module';
 
 import { TodoComponent } from './components/todo.component';
@@ -26,6 +26,8 @@ import { TodoService } from '../../service/todo.service';
   imports: [
     CommonModule,
     TodoRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
     StoreModule.forRoot({ todo: TodoReducer }),
     EffectsModule.forRoot([TodoEffects]),
   ],
