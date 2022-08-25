@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { selectAddTodo, selectTodoModal } from '../../../application-states/todo.selector';
+import { selectAddTodo, selectLoadTodo, selectTodoModal } from '../../../application-states/todo.selector';
 import { todoModalbehavior, addTodo, addTodoSuccess } from '../../../application-states/todo.action';
-import { TodoService } from 'src/app/service/todo.service';
+import { TodoItem } from 'src/app/models/todo-model';
 
 @Component({
   selector: 'app-todo-modal',
@@ -14,38 +14,28 @@ export class TodoModalComponent implements OnInit {
   showModal: boolean = false;
   modalTitle: string = '';
   modalActionText: string = '';
-  todoModalBehavior$ = this.store.select(selectTodoModal);
-  addtodo$ = this.store.select(selectAddTodo);
+  selectTodoModal$ = this.store.select(selectTodoModal);
+  selectLoadTodo$ = this.store.select(selectLoadTodo);
 
-  constructor(private store: Store<{}>, private fb: FormBuilder, private todoService: TodoService) { }
+  // 
+
+  constructor(private store: Store<{}>, private fb: FormBuilder) {
+
+  }
 
   ngOnInit(): void {
-    this.todoModalBehavior$.subscribe({
+    this.selectTodoModal$.subscribe({
       next: (value) => {
         this.showModal = value.showModal;
         this.modalTitle = value.modalTitle;
         this.modalActionText = value.modalActionText;
       },
     });
-
-    // this.addtodo$.subscribe((data) => { });
   }
 
   todoForm = this.fb.group({
     todoText: ['', Validators.required],
   });
-
-  onSubmit() {
-    this.store.dispatch(
-      addTodo({
-        'id': '10',
-        'title': 'suman',
-        'completed': false,
-        'deleted': false
-      }))
-    this.todoForm.reset();
-    this.closeTodoModal();
-  }
 
   closeTodoModal() {
     this.store.dispatch(
@@ -56,4 +46,35 @@ export class TodoModalComponent implements OnInit {
       })
     );
   }
+
+  createTodo = {
+    'id': '',
+    'title': '',
+    'completed': false,
+    'deleted': false
+  }
+
+
+  getTodoData() {
+    this.selectLoadTodo$.subscribe(data => {
+      if (data?.length > 0) {
+        this.createTodo.id = data.length + 1;
+        this.createTodo.title = this.todoForm.value.todoText;
+        this.createTodo.completed = false;
+        this.createTodo.deleted = false;
+      }
+
+    });
+
+  }
+
+  onSubmit() {
+    this.getTodoData();
+    this.store.dispatch(
+      addTodo(this.createTodo)
+    );
+    this.todoForm.reset();
+    this.closeTodoModal();
+  }
+
 }

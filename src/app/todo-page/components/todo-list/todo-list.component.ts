@@ -3,7 +3,6 @@ import { TodoItem } from '../../../models/todo-model';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { selectLoadTodo } from '../../../application-states/todo.selector';
-import { loadTodos } from '../../../application-states/todo.action';
 
 @Component({
   selector: 'app-todo-list',
