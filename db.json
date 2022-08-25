@@ -1,31 +1,31 @@
 {
   "todo": [{
       "id": 1,
-      "text": "This is 1st todo lsit",
+      "title": "This is 1st todo lsit",
       "completed": false,
       "deleted": false
     },
     {
       "id": 2,
-      "text": "Go to market for shop",
+      "title": "Go to market for shop",
       "completed": false,
       "deleted": false
     },
     {
       "id": 3,
-      "text": "Reading books and making tea",
+      "title": "Reading books and making tea",
       "completed": false,
       "deleted": false
     },
     {
       "id": 4,
-      "text": "Go to office and work",
+      "title": "Go to office and work",
       "completed": false,
       "deleted": false
     },
     {
       "id": 5,
-      "text": "Practice time",
+      "title": "Practice time",
       "completed": false,
       "deleted": false
     }

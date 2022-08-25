@@ -10,11 +10,11 @@ import { TodoViewComponent } from './components/todo-view/todo-view.component';
 import { TodoModalComponent } from './components/todo-modal/todo-modal.component';
 
 import { StoreModule } from '@ngrx/store';
-import { TodoReducer } from './application-states/todo.reducer';
+import { TodoReducer } from '../application-states/todo.reducer';
 
 import { EffectsModule } from '@ngrx/effects';
-import { TodoEffects } from './application-states/todo.effects';
-import { TodoService } from '../../service/todo.service';
+import { TodoEffects } from '../application-states/todo.effects';
+import { TodoService } from '../service/todo.service';
 
 @NgModule({
   declarations: [

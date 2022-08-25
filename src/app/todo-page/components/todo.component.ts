@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { todoModalbehavior } from '../application-states/todo.action';
+import { todoModalbehavior } from '../../application-states/todo.action';
 
 @Component({
   selector: 'app-todo',

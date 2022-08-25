@@ -4,14 +4,14 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: 'todo',
-    loadChildren: () => import('./route/todo-page/todo.module').then(m => m.TodoModule)
+    loadChildren: () => import('./todo-page/todo.module').then(m => m.TodoModule)
   },
   {
     path: '',
     redirectTo: 'todo',
     pathMatch: 'full'
   }
-  ,{
+  , {
     path: '**',
     redirectTo: 'todo',
     pathMatch: 'full'

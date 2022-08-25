@@ -2,8 +2,13 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { map, catchError, switchMap } from 'rxjs/operators';
-import { TodoService } from '../../../service/todo.service';
-import { addTodo, addTodoSuccess, loadTodos, loadTodosSuccess, } from './todo.action';
+import { TodoService } from '../service/todo.service';
+import {
+    addTodo,
+    addTodoSuccess,
+    loadTodos,
+    loadTodosSuccess,
+} from './todo.action';
 
 @Injectable()
 export class TodoEffects {
@@ -12,7 +17,7 @@ export class TodoEffects {
     loadTodos$ = createEffect(() =>
         this.actions$.pipe(
             ofType(loadTodos),
-            switchMap((action) => {
+            switchMap(() => {
                 return this.todoService.getAllTodo().pipe(
                     map((data: any) => {
                         return loadTodosSuccess({ payload: data });
@@ -25,8 +30,8 @@ export class TodoEffects {
     addTodo$ = createEffect(() =>
         this.actions$.pipe(
             ofType(addTodo),
-            switchMap((todo) => {
-                return this.todoService.addTodo(todo).pipe(
+            switchMap((data) => {
+                return this.todoService.addTodo(data).pipe(
                     map((data: any) => {
                         return addTodoSuccess({ payload: data });
                     }),

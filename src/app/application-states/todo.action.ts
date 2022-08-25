@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { TodoModalItem, TodoItem } from '../../../models/todo-model';
+import { TodoModalItem, TodoItem } from '../models/todo-model';
 
 export const todoModalbehavior = createAction(
   '[TODO_PAGE] Open_Todo_Modal',

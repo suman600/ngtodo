@@ -1,18 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { TodoItem } from '../../../../models/todo-model';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import {
-  selectLoadTodo,
-  selectTodoModal,
-} from '../../application-states/todo.selector';
-import {
-  addTodo,
-  addTodoSuccess,
-  loadTodos,
-  todoModalbehavior,
-} from '../../application-states/todo.action';
+import { selectAddTodo, selectTodoModal } from '../../../application-states/todo.selector';
+import { todoModalbehavior, addTodo, addTodoSuccess } from '../../../application-states/todo.action';
+import { TodoService } from 'src/app/service/todo.service';
 
 @Component({
   selector: 'app-todo-modal',
@@ -24,8 +15,9 @@ export class TodoModalComponent implements OnInit {
   modalTitle: string = '';
   modalActionText: string = '';
   todoModalBehavior$ = this.store.select(selectTodoModal);
+  addtodo$ = this.store.select(selectAddTodo);
 
-  constructor(private store: Store<{}>, private fb: FormBuilder) { }
+  constructor(private store: Store<{}>, private fb: FormBuilder, private todoService: TodoService) { }
 
   ngOnInit(): void {
     this.todoModalBehavior$.subscribe({
@@ -35,6 +27,8 @@ export class TodoModalComponent implements OnInit {
         this.modalActionText = value.modalActionText;
       },
     });
+
+    // this.addtodo$.subscribe((data) => { });
   }
 
   todoForm = this.fb.group({
@@ -42,6 +36,13 @@ export class TodoModalComponent implements OnInit {
   });
 
   onSubmit() {
+    this.store.dispatch(
+      addTodo({
+        'id': '10',
+        'title': 'suman',
+        'completed': false,
+        'deleted': false
+      }))
     this.todoForm.reset();
     this.closeTodoModal();
   }

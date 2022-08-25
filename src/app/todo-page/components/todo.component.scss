@@ -109,10 +109,11 @@
 
 app-todo-list {
     grid-row: 2 / span 1;
+    grid-column: 2/span 5;
 }
 
 app-todo-view {
-    grid-column: 3 / span 10;
+    grid-column: 7/span 6;
     grid-row: 2 / span 1;
 }
 

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { TodoItem } from '../../../../models/todo-model';
+import { TodoItem } from '../../../models/todo-model';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { selectLoadTodo } from '../../application-states/todo.selector';
+import { selectLoadTodo } from '../../../application-states/todo.selector';
+import { loadTodos } from '../../../application-states/todo.action';
 
 @Component({
   selector: 'app-todo-list',
@@ -11,14 +12,16 @@ import { selectLoadTodo } from '../../application-states/todo.selector';
 })
 export class TodoListComponent implements OnInit {
   todos$: Observable<TodoItem[]> = this.store.select(selectLoadTodo);
-  todos: TodoItem[] = [];
+  todos: any = [];
 
   constructor(private store: Store<{ todo: TodoItem[] }>) { }
 
   ngOnInit() {
     this.store.dispatch({ type: '[TODO_PAGE] Load Todos' });
-    this.todos$.subscribe((data) => {
-      this.todos = data;
-    });
+    this.todos$.subscribe(data => {
+      if (data?.length > 0) {
+        this.todos = data;
+      }
+    })
   }
 }
