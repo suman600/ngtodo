@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { selectAddTodo, selectLoadTodo, selectTodoModal } from '../../../application-states/todo.selector';
 import { todoModalbehavior, addTodo, addTodoSuccess } from '../../../application-states/todo.action';
-import { TodoItem } from 'src/app/models/todo-model';
+
 
 @Component({
   selector: 'app-todo-modal',

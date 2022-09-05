@@ -1,10 +1,13 @@
-import { createReducer, on } from '@ngrx/store';
+import { createReducer, on, State } from '@ngrx/store';
 import {
   todoModalbehavior,
   loadTodosSuccess,
   addTodo,
   addTodoSuccess,
   loadTodos,
+  EditTodo,
+  editTodo,
+  editTodoSuccess,
 } from './todo.action';
 import { TodoModalItem, TodoItem } from '../models/todo-model';
 
@@ -26,6 +29,9 @@ export const initialState = {
     completed: false,
     deleted: false
   },
+  editTodoObj: <EditTodo>{
+    id: ''
+  }
 };
 
 const _todoReducer = createReducer(
@@ -76,7 +82,20 @@ const _todoReducer = createReducer(
   on(addTodoSuccess, (_state, { payload }) => {
     let state = { ..._state };
     state.addTodoObj = payload;
+
     return state;
+  }),
+  on(editTodo, (_state, { id }) => {
+    let state = { ..._state };
+    state.editTodoObj = {
+      id: id
+    };
+    return state;
+  }),
+  on(editTodoSuccess, (_state, { payload }) => {
+    let state = { ..._state };
+    state.editTodoObj = payload
+    return state
   })
 );
 

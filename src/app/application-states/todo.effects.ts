@@ -6,6 +6,7 @@ import { TodoService } from '../service/todo.service';
 import {
     addTodo,
     addTodoSuccess,
+    editTodo,
     loadTodos,
     loadTodosSuccess,
 } from './todo.action';
@@ -40,6 +41,19 @@ export class TodoEffects {
             })
         )
     );
+    // editTodo$ = createEffect(() =>
+    //     this.actions$.pipe(
+    //         ofType(editTodo),
+    //         switchMap((data) => {
+    //             return this.todoService.editTodo(data).pipe(
+    //                 map((data: any) => {
+    //                     return editTodoSuccess({ payload: data });
+    //                 }),
+    //                 //catchError(() => of({ type: '[TODO_PAGE] Edit Todo' }))
+    //             );
+    //         })
+    //     )
+    // );
 }
 
 // catchError(() => of({ type: '[TODO_PAGE] Load Todos Error' }))

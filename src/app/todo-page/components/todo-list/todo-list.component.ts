@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Type } from '@angular/core';
 import { TodoItem } from '../../../models/todo-model';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { selectLoadTodo } from '../../../application-states/todo.selector';
+import { loadTodos } from 'src/app/application-states/todo.action';
 
 @Component({
   selector: 'app-todo-list',
@@ -11,6 +12,7 @@ import { selectLoadTodo } from '../../../application-states/todo.selector';
 })
 export class TodoListComponent implements OnInit {
   todos$: Observable<TodoItem[]> = this.store.select(selectLoadTodo);
+
   todos: any = [];
 
   constructor(private store: Store<{ todo: TodoItem[] }>) { }
@@ -22,5 +24,10 @@ export class TodoListComponent implements OnInit {
         this.todos = data;
       }
     })
+  }
+
+  editTodo(e: any) {
+    if (e.target.id) {
+    }
   }
 }
