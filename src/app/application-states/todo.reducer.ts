@@ -9,7 +9,7 @@ import {
   editTodo,
   editTodoSuccess,
 } from './todo.action';
-import { TodoModalItem, TodoItem } from '../models/todo-model';
+import { TodoModalItem, TodoItem } from '../core/todo-model';
 
 export const initialState = {
   todoModalObj: <TodoModalItem>{

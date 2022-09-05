@@ -1,5 +1,5 @@
 import { Component, OnInit, Type } from '@angular/core';
-import { TodoItem } from '../../../models/todo-model';
+import { TodoItem } from '../../../core/todo-model';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { selectLoadTodo } from '../../../application-states/todo.selector';
