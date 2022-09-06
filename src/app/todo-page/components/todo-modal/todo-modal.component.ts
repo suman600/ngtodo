@@ -47,7 +47,7 @@ export class TodoModalComponent implements OnInit {
     );
   }
 
-  createTodo = {
+  createTodo: any = {
     'id': '',
     'title': '',
     'completed': false,

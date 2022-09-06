@@ -4,10 +4,9 @@ import { of } from 'rxjs';
 import { map, catchError, switchMap } from 'rxjs/operators';
 import { TodoService } from '../service/todo.service';
 import {
-    addTodo,
+    addTodo, addTodoError,
     addTodoSuccess,
-    editTodo,
-    loadTodos,
+    loadTodos, loadTodosError,
     loadTodosSuccess,
 } from './todo.action';
 
@@ -23,7 +22,7 @@ export class TodoEffects {
                     map((data: any) => {
                         return loadTodosSuccess({ payload: data });
                     }),
-                    catchError(() => of({ type: '[TODO_PAGE] Load Todos Error' }))
+                    catchError(() => of(loadTodosError))
                 );
             })
         )
@@ -36,7 +35,7 @@ export class TodoEffects {
                     map((data: any) => {
                         return addTodoSuccess({ payload: data });
                     }),
-                    catchError(() => of({ type: '[TODO_PAGE] add Todo Error]' }))
+                    catchError(() => of(addTodoError))
                 );
             })
         )

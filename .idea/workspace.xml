@@ -2,10 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d1d49c1a-c5d5-4be6-ae35-eeb7c850086f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/application-states/todo.action.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/application-states/todo.action.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/application-states/todo.effects.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/application-states/todo.effects.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/application-states/todo.reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/application-states/todo.reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/core/mapping-framework.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/core/projector.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/core/todo-model.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/core/todo.adaper.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/core/todo.adaper.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/models/todo-model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/core/todo.type.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/core/validator.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/service/todo.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/service/todo.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/todo-page/components/todo-list/todo-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/todo-page/components/todo-list/todo-list.component.ts" afterDir="false" />
     </list>
@@ -33,7 +39,7 @@
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "/Users/testbook/Desktop/ngtodo",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.Color Scheme Font",
     "ts.external.directory.path": "/Applications/WebStorm.app/Contents/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external",
     "vue.rearranger.settings.migration": "true"
   }
@@ -52,7 +58,9 @@
       <workItem from="1662405443796" duration="343000" />
       <workItem from="1662405790971" duration="16000" />
       <workItem from="1662405825262" duration="1533000" />
-      <workItem from="1662407371092" duration="252000" />
+      <workItem from="1662407371092" duration="459000" />
+      <workItem from="1662435654400" duration="8143000" />
+      <workItem from="1662457434995" duration="31000" />
     </task>
     <servers />
   </component>

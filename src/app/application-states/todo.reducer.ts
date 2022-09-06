@@ -4,34 +4,31 @@ import {
   loadTodosSuccess,
   addTodo,
   addTodoSuccess,
-  loadTodos,
-  EditTodo,
-  editTodo,
-  editTodoSuccess,
+  loadTodos
 } from './todo.action';
-import { TodoModalItem, TodoItem } from '../core/todo-model';
+import { TodoUIModal, TodoDataModel } from '../core/todo.adaper'
 
 export const initialState = {
-  todoModalObj: <TodoModalItem>{
+  todoModalObj: <TodoUIModal>{
     showModal: false,
     modalTitle: '',
     modalActionText: '',
   },
-  loadTodoObj: <TodoItem>{
+  loadTodoObj: <TodoDataModel>{
     id: '',
     title: '',
     completed: false,
     deleted: false
   },
-  addTodoObj: <TodoItem>{
+  addTodoObj: <TodoDataModel>{
     id: '',
     title: '',
     completed: false,
     deleted: false
   },
-  editTodoObj: <EditTodo>{
-    id: ''
-  }
+  // editTodoObj: <EditTodo>{
+  //   id: ''
+  // }
 };
 
 const _todoReducer = createReducer(
@@ -85,18 +82,18 @@ const _todoReducer = createReducer(
 
     return state;
   }),
-  on(editTodo, (_state, { id }) => {
-    let state = { ..._state };
-    state.editTodoObj = {
-      id: id
-    };
-    return state;
-  }),
-  on(editTodoSuccess, (_state, { payload }) => {
-    let state = { ..._state };
-    state.editTodoObj = payload
-    return state
-  })
+  // on(editTodo, (_state, { id }) => {
+  //   let state = { ..._state };
+  //   state.editTodoObj = {
+  //     id: id
+  //   };
+  //   return state;
+  // }),
+  // on(editTodoSuccess, (_state, { payload }) => {
+  //   let state = { ..._state };
+  //   state.editTodoObj = payload
+  //   return state
+  // })
 );
 
 export function TodoReducer(state: any, action: any) {

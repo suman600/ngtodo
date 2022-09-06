@@ -1,22 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { TodoItem } from '../core/todo-model';
-import { Observable } from 'rxjs';
+import { TodoDataModel } from '../core/todo.adaper';
 
 @Injectable()
 export class TodoService {
   private API_URL: string = 'http://localhost:3000/todo';
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient) {}
 
+  getAllTodo() {
+    return this.http.get<TodoDataModel>(this.API_URL);
   }
 
-  getAllTodo(): Observable<TodoItem[]> {
-    return this.http.get<TodoItem[]>(this.API_URL);
-  }
-
-  addTodo(todo: TodoItem): Observable<TodoItem> {
-    return this.http.post<TodoItem>(this.API_URL, todo);
+  addTodo(todo){
+    return this.http.post<TodoDataModel>(this.API_URL, todo);
   }
 
 }
