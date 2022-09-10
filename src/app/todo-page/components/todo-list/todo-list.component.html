@@ -1,9 +1,9 @@
 <div class="card">
   <div class="card-body">
-    <div class="todo-list" *ngFor="let todo of todos">
-      <input type="checkbox" id="{{ todo.id }}" />
+    <div class="todo-list" *ngFor="let todo of todos;" id="{{ todo.id }}">
+      <input type="checkbox" />
       <span class="">{{todo.title}}</span>
-      <i class="fas fa-edit"></i>
+      <i class="fas fa-edit" (click)="editTodo($event)"></i>
       <i class="fas fa-trash"></i>
     </div>
     <div class="todo-list card--empty" *ngIf="todos?.length==0">

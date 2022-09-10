@@ -1,5 +1,6 @@
 {
-  "todo": [{
+  "todo": [
+    {
       "id": 1,
       "title": "This is 1st todo lsit",
       "completed": false,
@@ -28,6 +29,20 @@
       "title": "Practice time",
       "completed": false,
       "deleted": false
+    },
+    {
+      "id": 6,
+      "title": "suman",
+      "completed": false,
+      "deleted": false,
+      "type": "[TODO_PAGE] Add Todo"
+    },
+    {
+      "id": 7,
+      "title": "suamn",
+      "completed": false,
+      "deleted": false,
+      "type": "[TODO_PAGE] Add Todo"
     }
   ]
 }

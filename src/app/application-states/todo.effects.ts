@@ -4,10 +4,9 @@ import { of } from 'rxjs';
 import { map, catchError, switchMap } from 'rxjs/operators';
 import { TodoService } from '../service/todo.service';
 import {
-    addTodo, addTodoError,
-    addTodoSuccess,
-    loadTodos, loadTodosError,
-    loadTodosSuccess,
+    loadTodos, loadTodosSuccess, loadTodosError,
+    addTodo, addTodoSuccess, addTodoError,
+    editTodo, editTodoSuccess, editTodoError
 } from './todo.action';
 
 @Injectable()
@@ -40,19 +39,20 @@ export class TodoEffects {
             })
         )
     );
-    // editTodo$ = createEffect(() =>
-    //     this.actions$.pipe(
-    //         ofType(editTodo),
-    //         switchMap((data) => {
-    //             return this.todoService.editTodo(data).pipe(
-    //                 map((data: any) => {
-    //                     return editTodoSuccess({ payload: data });
-    //                 }),
-    //                 //catchError(() => of({ type: '[TODO_PAGE] Edit Todo' }))
-    //             );
-    //         })
-    //     )
-    // );
+    editTodo$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(editTodo),
+            switchMap((data) => {
+
+                return this.todoService.editTodo(data.payload).pipe(
+                    map((data) => {
+                        return editTodoSuccess(data);
+                    }),
+                    catchError(() => of(editTodoError))
+                )
+            })
+        )
+    );
 }
 
 // catchError(() => of({ type: '[TODO_PAGE] Load Todos Error' }))

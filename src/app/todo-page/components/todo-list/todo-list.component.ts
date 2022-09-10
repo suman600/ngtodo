@@ -1,9 +1,9 @@
 import { Component, OnInit, Type } from '@angular/core';
-import { TodoDataModel } from '../../../core/todo.adaper';
+import { TodoDataModel, TodoId } from '../../../core/todo.adaper';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { selectLoadTodo } from '../../../application-states/todo.selector';
-import { loadTodos } from 'src/app/application-states/todo.action';
+import { selectLoadTodo, selectEditTodo } from '../../../application-states/todo.selector';
+import { loadTodos, editTodo, editTodoSuccess } from 'src/app/application-states/todo.action';
 
 @Component({
   selector: 'app-todo-list',
@@ -14,11 +14,18 @@ export class TodoListComponent implements OnInit {
   todos$: Observable<TodoDataModel[]> = this.store.select(selectLoadTodo);
 
   todos: any = [];
+  payload: any;
 
-  constructor(private store: Store<{ todo: TodoDataModel[] }>) { }
+  constructor(private store: Store<{}>) { }
 
   ngOnInit() {
-    this.store.dispatch({ type: '[TODO_PAGE] Load Todos' });
+    // this.payload = {
+    //   id: "",
+    //   title: "",
+    //   completed: "",
+    //   deleted: "",
+    // }
+    this.store.dispatch(loadTodos());
     this.todos$.subscribe(data => {
       if (data?.length > 0) {
         this.todos = data;
@@ -26,8 +33,13 @@ export class TodoListComponent implements OnInit {
     })
   }
 
-  editTodo(e: any) {
-    if (e.target.id) {
+  editTodo(event: any) {
+    let _id = event.target.parentElement.id;
+    this.payload = {
+      _id: _id
     }
+    this.store.dispatch(editTodo({ payload: this.payload }));
   }
+
+
 }

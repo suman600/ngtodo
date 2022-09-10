@@ -11,5 +11,7 @@ export interface TodoDataModel {
     completed: boolean;
     deleted: boolean;
 }
-
+export interface TodoId {
+    id: string;
+}
 

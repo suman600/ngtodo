@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { selectAddTodo, selectLoadTodo, selectTodoModal } from '../../../application-states/todo.selector';
+import { selectLoadTodo, selectTodoModal } from '../../../application-states/todo.selector';
 import { todoModalbehavior, addTodo, addTodoSuccess } from '../../../application-states/todo.action';
+
 
 
 @Component({
@@ -55,7 +56,7 @@ export class TodoModalComponent implements OnInit {
   }
 
 
-  getTodoData() {
+  createTodoData() {
     this.selectLoadTodo$.subscribe(data => {
       if (data?.length > 0) {
         this.createTodo.id = data.length + 1;
@@ -69,7 +70,7 @@ export class TodoModalComponent implements OnInit {
   }
 
   onSubmit() {
-    this.getTodoData();
+    this.createTodoData();
     this.store.dispatch(
       addTodo(this.createTodo)
     );
