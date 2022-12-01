@@ -18,8 +18,12 @@ export class TodoService {
   }
 
   editTodo(id: TodoId) {
-    return this.http.get(`${this.API_URL}/${id}`);
-    console.log(this.http.get(`${this.API_URL}/${id}`))
+    // let suman = this.http.get(`http://localhost:3000/todo/1`);
+    console.log(id);
+    return this.http.get(this.API_URL + '/' + id.id);
+    // return this.http.get(http://localhost:3000/todo/1`);
+    // return this.http.get(`${this.API_URL}/${id}`);
+    // console.log(this.http.get(`${this.API_URL}/${id}`))
   }
 
 }

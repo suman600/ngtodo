@@ -27,9 +27,13 @@ export const initialState = {
     completed: false,
     deleted: false
   },
-  editTodoObj: <TodoId>{
-    id: ''
-  }
+  editTodoObj: <TodoDataModel>{
+    id: '',
+    title: '',
+    completed: false,
+    deleted: false
+  },
+  editToDoId: ''
 };
 
 const _todoReducer = createReducer(
@@ -56,6 +60,7 @@ const _todoReducer = createReducer(
   on(loadTodosSuccess, (_state, { payload }) => {
     let state = { ..._state };
     state.loadTodoObj = payload;
+    console.log(state);
     return state;
   }),
 
@@ -75,20 +80,16 @@ const _todoReducer = createReducer(
 
     return state;
   }),
-  on(editTodo, (_state, { id, title, completed, deleted }) => {
+  on(editTodo, (_state, { id }) => {
     let state = { ..._state };
-    state.addTodoObj = {
-      id: id,
-      title: title,
-      completed: completed,
-      deleted: deleted
-    };
+    state.editToDoId = id;
     return state;
   }),
 
   on(editTodoSuccess, (_state, { payload }) => {
     let state = { ..._state };
-    state.editTodoObj = payload
+    state.editTodoObj = payload;
+    console.log(payload, state)
     return state
   })
 );

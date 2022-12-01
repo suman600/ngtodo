@@ -33,12 +33,15 @@ export class TodoModalComponent implements OnInit {
 
   }
 
+
+
   ngOnInit(): void {
     this.selectTodoModal$.subscribe({
       next: (value) => {
         this.showModal = value.showModal;
         this.modalTitle = value.modalTitle;
         this.modalActionText = value.modalActionText;
+
       },
     });
   }

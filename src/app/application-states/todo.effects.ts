@@ -43,11 +43,11 @@ export class TodoEffects {
         this.actions$.pipe(
             ofType(editTodo),
             switchMap((data) => {
-
                 return this.todoService.editTodo(data).pipe(
                     map((data: any) => {
-                        return editTodoSuccess(data);
-                    }),
+                        return editTodoSuccess({ payload: data });
+                    }
+                    ),
                     catchError(() => of(editTodoError))
                 )
             }

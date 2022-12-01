@@ -2,8 +2,8 @@ import { Component, OnInit, Type } from '@angular/core';
 import { TodoDataModel, TodoId } from '../../../core/todo.adaper';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { selectLoadTodo, selectEditTodo } from '../../../application-states/todo.selector';
-import { loadTodos, editTodo, editTodoSuccess } from 'src/app/application-states/todo.action';
+import { selectLoadTodo, selectEditTodo, selectTodoModal } from '../../../application-states/todo.selector';
+import { loadTodos, editTodo, editTodoSuccess, todoModalbehavior } from 'src/app/application-states/todo.action';
 
 
 @Component({
@@ -13,7 +13,7 @@ import { loadTodos, editTodo, editTodoSuccess } from 'src/app/application-states
 })
 export class TodoListComponent implements OnInit {
   todos$: Observable<TodoDataModel[]> = this.store.select(selectLoadTodo);
-
+  selectTodoModal$ = this.store.select(selectTodoModal);
   todos: any = [];
   payload: any;
 
@@ -29,8 +29,17 @@ export class TodoListComponent implements OnInit {
   }
 
   editTodo(todo: TodoDataModel) {
+    this.store.dispatch(
+      todoModalbehavior({
+        showModal: true,
+        modalTitle: 'Edit Todo',
+        modalActionText: 'Update',
+      })
 
-    console.log(todo)
+    );
+    // console.log(todo.id);
+    this.store.dispatch(editTodo({ id: todo.id }));
+    //console.log(todo)
   }
 
   deleteTodo() {
