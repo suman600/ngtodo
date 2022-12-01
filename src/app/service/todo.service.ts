@@ -19,6 +19,7 @@ export class TodoService {
 
   editTodo(id: TodoId) {
     return this.http.get(`${this.API_URL}/${id}`);
+    console.log(this.http.get(`${this.API_URL}/${id}`))
   }
 
 }

@@ -75,13 +75,17 @@ const _todoReducer = createReducer(
 
     return state;
   }),
-  on(editTodo, (_state, { ...payload }) => {
+  on(editTodo, (_state, { id, title, completed, deleted }) => {
     let state = { ..._state };
-    state.editTodoObj = {
-      id: payload.payload.id
+    state.addTodoObj = {
+      id: id,
+      title: title,
+      completed: completed,
+      deleted: deleted
     };
     return state;
   }),
+
   on(editTodoSuccess, (_state, { payload }) => {
     let state = { ..._state };
     state.editTodoObj = payload

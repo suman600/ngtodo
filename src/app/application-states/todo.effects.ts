@@ -44,13 +44,14 @@ export class TodoEffects {
             ofType(editTodo),
             switchMap((data) => {
 
-                return this.todoService.editTodo(data.payload).pipe(
-                    map((data) => {
+                return this.todoService.editTodo(data).pipe(
+                    map((data: any) => {
                         return editTodoSuccess(data);
                     }),
                     catchError(() => of(editTodoError))
                 )
-            })
+            }
+            )
         )
     );
 }

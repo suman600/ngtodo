@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { selectLoadTodo, selectTodoModal } from '../../../application-states/todo.selector';
 import { todoModalbehavior, addTodo, addTodoSuccess } from '../../../application-states/todo.action';
+import { TodoDataModel } from 'src/app/core/todo.adaper';
 
 
 
@@ -18,9 +19,17 @@ export class TodoModalComponent implements OnInit {
   selectTodoModal$ = this.store.select(selectTodoModal);
   selectLoadTodo$ = this.store.select(selectLoadTodo);
 
-  // 
+  createTodo: TodoDataModel = {
+    'id': '',
+    'title': '',
+    'completed': false,
+    'deleted': false
+  }
 
-  constructor(private store: Store<{}>, private fb: FormBuilder) {
+  constructor(
+    private store: Store<{}>,
+    private fb: FormBuilder
+  ) {
 
   }
 
@@ -48,12 +57,6 @@ export class TodoModalComponent implements OnInit {
     );
   }
 
-  createTodo: any = {
-    'id': '',
-    'title': '',
-    'completed': false,
-    'deleted': false
-  }
 
 
   createTodoData() {
