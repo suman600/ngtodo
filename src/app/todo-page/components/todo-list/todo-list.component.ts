@@ -29,17 +29,22 @@ export class TodoListComponent implements OnInit {
   }
 
   editTodo(todo: TodoDataModel) {
+    this.store.dispatch(editTodo({
+      id: todo.id,
+      title: todo.title,
+      completed: todo.completed,
+      deleted: todo.deleted
+    }));
     this.store.dispatch(
       todoModalbehavior({
         showModal: true,
         modalTitle: 'Edit Todo',
         modalActionText: 'Update',
       })
-
     );
-    // console.log(todo.id);
-    this.store.dispatch(editTodo({ id: todo.id }));
-    //console.log(todo)
+
+
+
   }
 
   deleteTodo() {

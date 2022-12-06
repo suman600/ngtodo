@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { selectLoadTodo, selectTodoModal } from '../../../application-states/todo.selector';
-import { todoModalbehavior, addTodo, addTodoSuccess } from '../../../application-states/todo.action';
+import { selectEditTodo, selectLoadTodo, selectTodoModal } from '../../../application-states/todo.selector';
+import { todoModalbehavior, addTodo, addTodoSuccess, editTodo } from '../../../application-states/todo.action';
 import { TodoDataModel } from 'src/app/core/todo.adaper';
 
 
@@ -16,15 +16,12 @@ export class TodoModalComponent implements OnInit {
   showModal: boolean = false;
   modalTitle: string = '';
   modalActionText: string = '';
+  isUpdate: boolean = false;
+
   selectTodoModal$ = this.store.select(selectTodoModal);
   selectLoadTodo$ = this.store.select(selectLoadTodo);
+  editTodoData$ = this.store.select(selectEditTodo);
 
-  createTodo: TodoDataModel = {
-    'id': '',
-    'title': '',
-    'completed': false,
-    'deleted': false
-  }
 
   constructor(
     private store: Store<{}>,
@@ -33,17 +30,35 @@ export class TodoModalComponent implements OnInit {
 
   }
 
-
-
+  resetTodoObj = (): TodoDataModel => {
+    return {
+      'id': '',
+      'title': '',
+      'completed': false,
+      'deleted': false
+    }
+  }
+  todo: TodoDataModel = this.resetTodoObj()
   ngOnInit(): void {
     this.selectTodoModal$.subscribe({
       next: (value) => {
         this.showModal = value.showModal;
         this.modalTitle = value.modalTitle;
         this.modalActionText = value.modalActionText;
-
       },
     });
+
+
+    this.editTodoData$.subscribe({
+      next: (data) => {
+        if (data.id && !this.isUpdate) {
+          this.todo = data;
+          this.isUpdate = true;
+          this.todoForm.controls['todoText'].setValue(data.title)
+            ;
+        }
+      }
+    })
   }
 
   todoForm = this.fb.group({
@@ -62,24 +77,38 @@ export class TodoModalComponent implements OnInit {
 
 
 
-  createTodoData() {
-    this.selectLoadTodo$.subscribe(data => {
-      if (data?.length > 0) {
-        this.createTodo.id = data.length + 1;
-        this.createTodo.title = this.todoForm.value.todoText;
-        this.createTodo.completed = false;
-        this.createTodo.deleted = false;
-      }
+  // createTodoData() {
 
-    });
+  //   this.selectLoadTodo$.subscribe(data => {
+  //     if (data?.length > 0) {
 
-  }
+  //     }
+
+  //   });
+
+  // }
 
   onSubmit() {
-    this.createTodoData();
-    this.store.dispatch(
-      addTodo(this.createTodo)
-    );
+    // this.createTodoData();
+    if (!this.todo?.id && !this.isUpdate) {
+      this.store.dispatch(
+        addTodo({
+          id: Date.now().toString(),
+          title: this.todoForm.value.todoText,
+          completed: false,
+          deleted: false
+        })
+      );
+    }
+    else {
+      this.store.dispatch(editTodo({
+        id: this.todo.id,
+        title: this.todoForm.value.todoText,
+        completed: this.todo.completed,
+        deleted: this.todo.deleted
+      }));
+    }
+    this.todo = this.resetTodoObj();
     this.todoForm.reset();
     this.closeTodoModal();
   }

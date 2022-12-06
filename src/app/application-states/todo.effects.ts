@@ -42,7 +42,7 @@ export class TodoEffects {
     editTodo$ = createEffect(() =>
         this.actions$.pipe(
             ofType(editTodo),
-            switchMap((data) => {
+            switchMap((data: any) => {
                 return this.todoService.editTodo(data).pipe(
                     map((data: any) => {
                         return editTodoSuccess({ payload: data });

@@ -4,6 +4,12 @@ export interface TodoUIModal {
     modalTitle: string;
     modalActionText: string;
 }
+export interface ModalUI {
+    show: boolean;
+    title: string;
+    action: string;
+    id?: string
+}
 
 export interface TodoDataModel {
     id: string;
