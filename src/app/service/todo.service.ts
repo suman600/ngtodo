@@ -22,10 +22,9 @@ export class TodoService {
     return this.http.get(this.API_URL + '/' + id.id);
   }
 
+  updateTodo(id: TodoId, body: any) {
+    console.log(id);
+    return this.http.put(this.API_URL + '/' + id.id, body);
+  }
+
 }
-
-// let suman = this.http.get(`http://localhost:3000/todo/1`);
-
- // return this.http.get(http://localhost:3000/todo/1`);
-    // return this.http.get(`${this.API_URL}/${id}`);
-    // console.log(this.http.get(`${this.API_URL}/${id}`))

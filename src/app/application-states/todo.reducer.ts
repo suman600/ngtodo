@@ -1,6 +1,5 @@
 import { createReducer, on, State } from '@ngrx/store';
 import {
-  openModal, closeModal,
   todoModalbehavior,
   loadTodosSuccess,
   addTodo,
@@ -8,20 +7,21 @@ import {
   loadTodos,
   editTodo, editTodoSuccess
 } from './todo.action';
-import { TodoUIModal, TodoDataModel, TodoId, ModalUI } from '../core/todo.adaper'
+import { TodoDataModel, TodoId, Modal } from '../core/todo.adaper'
 
 export const initialState = {
-  todoModalObj: <TodoUIModal>{
-    showModal: false,
-    modalTitle: '',
-    modalActionText: '',
-  },
-  modalObj: <ModalUI>{
+  // todoModalObj: <TodoUIModal>{
+  //   showModal: false,
+  //   modalTitle: '',
+  //   modalActionText: '',
+  // },
+
+  modalObj: <Modal>{
     show: false,
-    title: '',
-    action: '',
-    id: ''
+    type: ''
   },
+
+
   loadTodoObj: <TodoDataModel>{
     id: '',
     title: '',
@@ -46,27 +46,18 @@ export const initialState = {
 const _todoReducer = createReducer(
   initialState,
   on(
-    todoModalbehavior,
-    (_state, { showModal, modalTitle, modalActionText }) => {
+    todoModalbehavior, (_state, { payload: { show, type } }) => {
       let state = { ..._state };
-      state.todoModalObj = {
-        showModal: showModal,
-        modalTitle: modalTitle,
-        modalActionText: modalActionText,
+
+      state.modalObj = {
+
+        show: show,
+        type: type
       };
       return state;
     }
   ),
-  on(openModal, (_state, { payload }) => {
-    let state = { ..._state };
-    state.modalObj = payload;
-    return state;
-  }),
-  on(closeModal, (_state, { payload }) => {
-    let state = { ..._state };
-    state.modalObj = payload;
-    return state;
-  }),
+
   on(loadTodos, (_state) => {
     let state = { ..._state };
     return state;

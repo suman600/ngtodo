@@ -1,11 +1,9 @@
 import { createAction, props } from '@ngrx/store';
-import { TodoUIModal, TodoDataModel, ModalUI } from '../core/todo.adaper';
+import { TodoDataModel, Modal } from '../core/todo.adaper';
 
 
-export const todoModalbehavior = createAction('[TODO_PAGE] Open_Todo_Modal', props<TodoUIModal>());
+export const todoModalbehavior = createAction('[TODO_PAGE] Todo_Modal_Behavior', props<{ payload: Modal }>());
 
-export const openModal = createAction('[TODO_PAGE] Open_Todo_Modal', props<{ payload: ModalUI }>());
-export const closeModal = createAction('[TODO_PAGE] Close_Todo_Modal', props<{ payload: ModalUI }>());
 
 
 export const loadTodos = createAction('[TODO_PAGE] Load Todos');

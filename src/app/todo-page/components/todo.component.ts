@@ -13,12 +13,7 @@ export class TodoComponent implements OnInit {
   ngOnInit(): void { }
 
   openTodoModal() {
-    this.store.dispatch(
-      todoModalbehavior({
-        showModal: true,
-        modalTitle: 'Add Todo',
-        modalActionText: 'Submit',
-      })
+    this.store.dispatch(todoModalbehavior({ payload: { show: true, type: 'addMode', } })
     );
   }
 }

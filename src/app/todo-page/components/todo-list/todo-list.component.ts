@@ -35,12 +35,15 @@ export class TodoListComponent implements OnInit {
       completed: todo.completed,
       deleted: todo.deleted
     }));
+
     this.store.dispatch(
       todoModalbehavior({
-        showModal: true,
-        modalTitle: 'Edit Todo',
-        modalActionText: 'Update',
+        payload: {
+          show: true,
+          type: 'editMode'
+        }
       })
+
     );
 
 
