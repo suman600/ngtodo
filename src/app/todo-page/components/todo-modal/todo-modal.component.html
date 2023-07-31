@@ -1,23 +1,19 @@
-<div class="modal show" *ngIf="show">
+<div class="modal show" *ngIf="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form [formGroup]="todoForm" (ngSubmit)="onSubmit()">
+      <form>
         <div class="modal-header">
-          <h5 class="modal-title">{{ title }}</h5>
-          <button type="button" (click)="closeTodoModal()" class="close">
-            <i class="fas fa-close"></i>
-          </button>
+          <h5 class="modal-title">title</h5>
+          <button type="button" class="close"><i class="fas fa-close"></i></button>
         </div>
         <div class="modal-body">
           <input formControlName="todoText" type="text" class="todo-input" id="new-task-name" placeholder="Task Name" />
         </div>
         <div class="modal-footer">
-          <button (click)="closeTodoModal()" type="button" class="btn btn-secondary">
+          <button type="button" class="btn btn-secondary">
             Cancel
           </button>
-          <button type="submit" class="btn btn-primary" [disabled]="!todoForm.valid">
-            {{ action }}
-          </button>
+          <button type="submit" class="btn btn-primary"> action</button>
         </div>
       </form>
     </div>
