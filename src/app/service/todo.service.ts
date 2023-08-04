@@ -1,12 +1,27 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/compat/firestore'
+import { Observable } from 'rxjs';
+import { Todo } from '../core/todo.adaper';
 
 @Injectable()
+
+
 export class TodoService {
-  private API_URL: string = 'http://localhost:3000/todo';
 
-  constructor(private http: HttpClient) { }
+  private API_URL: string = '/todos';
 
+  todosRef: AngularFirestoreCollection<Todo>;
+  // todoRef: Observable<any[]>;
 
+  constructor(private db: AngularFirestore) {
+    this.todosRef = this.db.collection(this.API_URL);
+  }
+
+  getTodos(): AngularFirestoreCollection<Todo> {
+    return this.todosRef;
+  }
+  createTodo(todo: Todo) {
+    this.todosRef.add({ ...todo })
+  }
 
 }

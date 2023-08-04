@@ -1,8 +1,8 @@
 <div class="card">
   <div class="card-body">
-    <div class="todo-list" *ngFor="let todo of [0,1,2,3,4];" id="{{ todo }}">
+    <div class="todo-list" *ngFor="let todo of [1,2,3,4]" id="{{ todo }}">
       <input type="checkbox" />
-      <span class="">todo title</span>
+      <span class="">{{todo}}</span>
       <i class="fas fa-edit"></i>
       <i class="fas fa-trash"></i>
     </div>
