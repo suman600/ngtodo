@@ -24,4 +24,8 @@ export class TodoService {
     this.todosRef.add({ ...todo })
   }
 
+  deleteTodo(id: string) {
+    this.todosRef.doc(id).delete()
+  }
+
 }

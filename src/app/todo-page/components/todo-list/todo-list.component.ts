@@ -5,7 +5,6 @@ import { Todo } from 'src/app/core/todo.adaper';
 import { TodoService } from 'src/app/service/todo.service';
 
 
-
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
@@ -18,10 +17,7 @@ export class TodoListComponent implements OnInit {
   currentIndex = -1;
   loading: boolean = false;
 
-
-  constructor(private service: TodoService) {
-
-  }
+  constructor(private service: TodoService) { }
 
   ngOnInit() {
     this.loading = true;
@@ -44,5 +40,7 @@ export class TodoListComponent implements OnInit {
     });
   }
 
-
+  deleteTodo(id: string) {
+    this.service.deleteTodo(id);
+  }
 }
