@@ -1,13 +1,26 @@
 <div class="card">
   <div class="card-body">
-    <div class="todo-list" *ngFor="let todo of [1,2,3,4]" id="{{ todo }}">
-      <input type="checkbox" />
-      <span class="">{{todo}}</span>
-      <i class="fas fa-edit"></i>
-      <i class="fas fa-trash"></i>
-    </div>
-    <div class="todo-list card--empty" style="display: none;">
-      <i class="fas fa-duotone fa-trash"></i>
-    </div>
+    <ng-container *ngIf="loading" style="width: 100%;">
+      <div class="todo-list skeleton" *ngFor="let todo of [0,1,2,4]">
+        <div class="sk-aim" style="width: 20px;height:20px"></div>
+        <span class="sk-aim sk-t">skeleton</span>
+        <div class="sk-aim" style="width: 20px;height:20px"></div>
+        <div class="sk-aim" style="width: 20px;height:20px"></div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="!loading">
+      <div class="todo-list" *ngFor="let todo of todos" id="{{ todo }}">
+        <input type="checkbox" />
+        <span class="">{{todo.title}}</span>
+        <i class="fas fa-edit"></i>
+        <i class="fas fa-trash"></i>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="!todos && !loading">
+      <div class="todo-list card--empty">
+        <i class="fas fa-duotone fa-trash"></i>
+      </div>
+    </ng-container>
   </div>
 </div>

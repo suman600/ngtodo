@@ -9,12 +9,13 @@ import { TodoModalComponent } from './components/todo-modal/todo-modal.component
 
 import { TodoService } from '../service/todo.service';
 
+
 @NgModule({
   declarations: [
     TodoComponent,
     TodoListComponent,
     TodoViewComponent,
-    TodoModalComponent,
+    TodoModalComponent
   ],
   imports: [
     CommonModule,
