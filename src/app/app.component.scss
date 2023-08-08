@@ -1,0 +1,90 @@
+.page-layout {
+    display: grid;
+    grid-template-rows: max-content;
+    width: 100vw;
+    height: 100vh;
+    padding: 3rem 4rem;
+    background: #f8faf9;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 2rem;
+}
+
+.card--action {
+    grid-row: 1 / span 2;
+    grid-column: 1 / span 3;
+}
+
+.card--header-action {
+    grid-row: 1 / span 1;
+    grid-column: 4 / span 9;
+}
+
+app-todo-list {
+    grid-row: 2/span 1;
+    grid-column: 4 / span 5;
+    overflow: hidden;
+}
+
+app-todo-view {
+    grid-column: 9/span 4;
+    grid-row: 2 / span 1;
+    overflow: hidden;
+}
+
+.card {
+    box-shadow: 0 0 1.25rem rgba(31, 45, 61, 0.036);
+    border: 0 !important;
+    border-radius: 10px;
+    transition: background 0.2s ease-in-out;
+    height: max-content;
+
+    &-body {
+        padding: 25px;
+    }
+}
+
+.todo-action {
+    margin: 2rem 0 0;
+
+    div {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        padding: 9px 20px;
+        color: rgba(125, 125, 131, 0.8);
+        font-weight: 700;
+        font-size: 13px;
+        border-radius: 10px;
+        transition: all 0.2s ease-in-out;
+        margin-bottom: 3px;
+        overflow: hidden;
+        line-height: 23px;
+        cursor: pointer;
+
+        &:hover,
+        &.active {
+            background: rgba(#28a745, 0.05);
+            color: #5fd0a5;
+        }
+    }
+}
+
+.btn {
+    font-weight: 700;
+    padding: 9px 24px;
+    border-radius: 7px;
+    font-size: 14px;
+}
+
+.action-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+    }
+}

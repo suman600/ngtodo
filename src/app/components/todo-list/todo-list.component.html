@@ -11,7 +11,7 @@
     <ng-container *ngIf="!loading">
       <div class="todo-list" *ngFor="let todo of todos" id="{{ todo }}">
         <input type="checkbox" />
-        <span class="">{{todo.title}}</span>
+        <span>{{todo.title}}</span>
         <i class="fas fa-edit"></i>
         <i class="fas fa-trash"></i>
       </div>

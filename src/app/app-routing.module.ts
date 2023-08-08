@@ -1,10 +1,11 @@
+import { AppComponent } from './app.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
     path: 'todo',
-    loadChildren: () => import('./todo-page/todo.module').then(m => m.TodoModule)
+    component: AppComponent
   },
   {
     path: '',

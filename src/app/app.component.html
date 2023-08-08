@@ -1,1 +1,31 @@
-<router-outlet></router-outlet>
+<div class="page-layout">
+    <div class="card card--action">
+        <div class="card-body">
+            <button class="btn btn-success btn-block">
+                Create New Task
+            </button>
+            <div class="todo-action">
+                <div class="active"><i class="fas fa-bars"></i>All</div>
+                <div><i class="fas fa-check"></i>Completed</div>
+                <div><i class="fas fa-trash"></i>Deleted</div>
+            </div>
+        </div>
+    </div>
+    <div class="card card--header-action">
+        <div class="card-body">
+            <div class="action-header">
+                <button class="btn btn-primary">
+                    <i class="fas fa-check"></i>Complete All
+                </button>
+                <button class="btn btn-danger">
+                    <i class="fas fa-trash"></i>Delete All
+                </button>
+            </div>
+        </div>
+    </div>
+    <app-todo-list></app-todo-list>
+    <app-todo-view></app-todo-view>
+</div>
+
+<app-todo-modal></app-todo-modal>
+<app-todo-alert></app-todo-alert>
