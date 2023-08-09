@@ -40,6 +40,7 @@ export class TodoAlertComponent implements OnInit, OnDestroy {
   closeAlert() {
     this.alertService.closeAlert();
   }
+
   autoClose() {
     interval(2000)
       .pipe(takeUntil(this.timer$))
@@ -47,6 +48,7 @@ export class TodoAlertComponent implements OnInit, OnDestroy {
         this.alertService.closeAlert();
       });
   }
+
   ngOnDestroy() {
     this.subscription.unsubscribe();
     this.timer$.next(0);

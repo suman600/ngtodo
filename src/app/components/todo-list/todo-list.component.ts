@@ -1,8 +1,7 @@
+import { Todo } from "./../../core/todo.adaper";
 import { AlertService } from "./../../service/alert.service";
-import { Component, OnInit, Type } from "@angular/core";
-import { Observable } from "@firebase/util";
+import { Component, EventEmitter, OnInit, Output, Type } from "@angular/core";
 import { map } from "rxjs";
-import { Todo } from "src/app/core/todo.adaper";
 import { TodoService } from "src/app/service/todo.service";
 
 @Component({
@@ -15,6 +14,7 @@ export class TodoListComponent implements OnInit {
   todo?: Todo;
   currentIndex = -1;
   loading: boolean = false;
+  @Output() todoItemEvent = new EventEmitter<any>();
 
   constructor(
     private service: TodoService,
@@ -47,9 +47,16 @@ export class TodoListComponent implements OnInit {
       });
   }
 
-  deleteTodo(id: string) {
-    this.service.deleteTodo(id);
+  deleteTodo(param: any) {
+    let conF = confirm("are you sure want to delete");
+    if (conF == true) {
+      // this.service.deleteTodo(param.id);
+      this.alertService.showAlert(true, "Todo deleted successfully", "danger");
+      console.log(param.id);
+    }
   }
 
-  trashTodo() {}
+  viewTodo(todo: any) {
+    this.todoItemEvent.emit(todo);
+  }
 }

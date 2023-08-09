@@ -23,9 +23,8 @@
             </div>
         </div>
     </div>
-    <app-todo-list></app-todo-list>
-    <app-todo-view></app-todo-view>
+    <app-todo-list (todoItemEvent)="todoItemEvent($event)"></app-todo-list>
+    <app-todo-view [todo]="todo"></app-todo-view>
 </div>
-
 <app-todo-modal></app-todo-modal>
 <app-todo-alert></app-todo-alert>

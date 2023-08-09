@@ -9,4 +9,23 @@
   &-body {
     padding: 25px;
   }
+
+  &__empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &-footer {
+    display: flex;
+    gap: 1rem;
+  }
+}
+
+.btn {
+  font-weight: 700;
+  padding: 9px 24px;
+  border-radius: 7px;
+  font-size: 14px;
+  min-width: 100px;
 }
