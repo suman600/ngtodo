@@ -23,6 +23,7 @@ export class TodoListComponent implements OnInit {
 
   ngOnInit() {
     this.loading = true;
+    this.alertService.showAlert("Data fetching....", "success");
     this.getTodos();
   }
 
@@ -41,18 +42,14 @@ export class TodoListComponent implements OnInit {
       .subscribe((data) => {
         this.todos = data;
         this.loading = false;
-        if (this.todos.length) {
-          this.alertService.showAlert(true, "Data Loaded", "success");
-        }
       });
   }
 
-  deleteTodo(param: any) {
-    let conF = confirm("are you sure want to delete");
-    if (conF == true) {
-      // this.service.deleteTodo(param.id);
-      this.alertService.showAlert(true, "Todo deleted successfully", "danger");
-      console.log(param.id);
+  deleteTodo(todo: any, e: any) {
+    e.stopPropagation();
+    if (confirm("are you sure want to delete")) {
+      this.service.deleteTodo(todo.id);
+      this.alertService.showAlert("Todo deleted successfully", "danger");
     }
   }
 

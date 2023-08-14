@@ -1,6 +1,10 @@
-<div class="container" *ngIf="show">
-    <div class="alert {{classType}}">
-        <span>{{message}}</span>
-        <button (click)="closeAlert()" type="button" class="btn-close"></button>
-    </div>
+<div class="container" *ngIf="alerts.length">
+    <ng-container *ngFor="let alert of alerts; let i = index">
+        <div class="alert"
+            [ngClass]="{'alert-success': alert.type === 'success', 'alert-danger': alert.type === 'danger'}">
+
+            <span>{{alert.message}}</span>
+            <button (click)="closeAlert(i)" type="button" class="btn-close"></button>
+        </div>
+    </ng-container>
 </div>

@@ -1,5 +1,7 @@
 import { Todo } from "./../../core/todo.adaper";
 import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
+import { AlertService } from "src/app/service/alert.service";
+import { TodoService } from "src/app/service/todo.service";
 
 @Component({
   selector: "app-todo-view",
@@ -9,9 +11,18 @@ import { Component, Input, OnInit, Output, EventEmitter } from "@angular/core";
 export class TodoViewComponent implements OnInit {
   @Input() todo: any;
 
-  constructor() {}
+  constructor(
+    private service: TodoService,
+    private alertService: AlertService
+  ) {}
 
   ngOnInit(): void {
     // console.log(this.todo);
+  }
+  deleteTodo(todo: any) {
+    if (confirm("are you sure want to delete")) {
+      this.service.deleteTodo(todo.id);
+      this.alertService.showAlert("Todo deleted successfully", "danger");
+    }
   }
 }

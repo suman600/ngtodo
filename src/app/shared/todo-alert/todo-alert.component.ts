@@ -1,3 +1,4 @@
+import { Alert } from "./../../core/todo.adaper";
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Subject, Subscription } from "rxjs";
 import { AlertService } from "../../service/alert.service";
@@ -12,40 +13,33 @@ import { takeUntil } from "rxjs/operators";
 export class TodoAlertComponent implements OnInit, OnDestroy {
   show: boolean = false;
   message: string = "";
-  classType: string = "";
-
+  alerts: Alert[] = [];
   subscription = new Subscription();
   timer$ = new Subject();
-
   constructor(public alertService: AlertService) {}
 
   ngOnInit(): void {
     this.subscription = this.alertService.getAlert().subscribe((data) => {
-      this.show = data.show;
-      this.message = data.message;
-      switch (data.type) {
-        case "success":
-          this.classType = "alert-success";
-          break;
-        case "danger":
-          this.classType = "alert-danger";
-          break;
-        default:
-          this.classType = "alert-success";
-      }
+      console.log(data);
+
+      const newAlert: Alert = {
+        message: data.message,
+        type: data.type,
+      };
+      this.alerts.push(newAlert);
     });
     this.autoClose();
   }
 
-  closeAlert() {
-    this.alertService.closeAlert();
+  closeAlert(i: any) {
+    delete this.alerts[i];
   }
 
   autoClose() {
-    interval(2000)
+    interval(6000)
       .pipe(takeUntil(this.timer$))
       .subscribe(() => {
-        this.alertService.closeAlert();
+        this.alerts.shift();
       });
   }
 
@@ -55,3 +49,9 @@ export class TodoAlertComponent implements OnInit, OnDestroy {
     this.timer$.complete();
   }
 }
+
+// setTimeout(() => {
+//   this.alerts.filter((currentAlert, index) => {
+//     this.alerts.shift();
+//   });
+// }, 2000);

@@ -1,3 +1,4 @@
+import { Alert } from "./../core/todo.adaper";
 import { Injectable } from "@angular/core";
 import { Observable, Subject, timer } from "rxjs";
 
@@ -9,10 +10,7 @@ export class AlertService {
     return this.subject.asObservable();
   }
 
-  showAlert(show: true, message: string, type: string) {
-    this.subject.next({ show: show, message: message, type: type });
-  }
-  closeAlert() {
-    this.subject.next({ show: false, message: null, type: null });
+  showAlert(message: string, type: string) {
+    this.subject.next({ message: message, type: type });
   }
 }

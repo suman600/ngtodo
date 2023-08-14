@@ -4,7 +4,7 @@
   border-radius: 10px;
   transition: background .2s ease-in-out;
   height: max-content;
-  min-height: 240px;
+  min-height: 300px;
 
   &-body {
     padding: 25px;
@@ -19,6 +19,8 @@
   &-footer {
     display: flex;
     gap: 1rem;
+    background: #fff;
+    justify-content: space-between;
   }
 }
 
@@ -27,5 +29,5 @@
   padding: 9px 24px;
   border-radius: 7px;
   font-size: 14px;
-  min-width: 100px;
+  min-width: 150px;
 }
