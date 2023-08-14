@@ -1,14 +1,13 @@
-import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/compat/firestore'
-import { Observable } from 'rxjs';
-import { Todo } from '../core/todo.adaper';
+import { Injectable } from "@angular/core";
+import {
+  AngularFirestore,
+  AngularFirestoreCollection,
+} from "@angular/fire/compat/firestore";
+import { Todo } from "../core/todo.adaper";
 
 @Injectable()
-
-
 export class TodoService {
-
-  private API_URL: string = '/todos';
+  private API_URL: string = "/todos";
 
   todosRef: AngularFirestoreCollection<Todo>;
   // todoRef: Observable<any[]>;
@@ -21,11 +20,10 @@ export class TodoService {
     return this.todosRef;
   }
   createTodo(todo: Todo) {
-    this.todosRef.add({ ...todo })
+    this.todosRef.add({ title: todo.title, completed: todo.completed });
   }
 
   deleteTodo(id: string) {
-    this.todosRef.doc(id).delete()
+    this.todosRef.doc(id).delete();
   }
-
 }

@@ -1,6 +1,5 @@
-import { Alert } from "./../core/todo.adaper";
 import { Injectable } from "@angular/core";
-import { Observable, Subject, timer } from "rxjs";
+import { Observable, Subject } from "rxjs";
 
 @Injectable()
 export class AlertService {

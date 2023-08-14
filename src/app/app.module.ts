@@ -1,3 +1,4 @@
+import { ModalService } from "./service/modal.service";
 import { AlertService } from "./service/alert.service";
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
@@ -34,7 +35,7 @@ import { TodoService } from "./service/todo.service";
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
   ],
-  providers: [TodoService, AlertService],
+  providers: [TodoService, AlertService, ModalService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
