@@ -22,6 +22,7 @@
     margin-bottom: 1rem;
     min-width: 360px;
     font-weight: 600;
+    animation: fadein .3s;
 }
 
 span {
@@ -31,4 +32,17 @@ span {
 button {
     box-shadow: none !important;
 
+}
+
+
+@keyframes fadein {
+    from {
+        margin-top: 2rem;
+        opacity: 0;
+    }
+
+    to {
+        margin-top: 0;
+        opacity: 1;
+    }
 }

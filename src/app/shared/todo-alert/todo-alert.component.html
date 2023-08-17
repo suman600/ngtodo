@@ -1,7 +1,9 @@
 <div class="container" *ngIf="alerts.length">
     <ng-container *ngFor="let alert of alerts; let i = index">
-        <div class="alert"
-            [ngClass]="{'alert-success': alert.type === 'success', 'alert-danger': alert.type === 'danger'}">
+        <div class="alert" [ngClass]="{
+            'alert-success': alert.type === 'success', 
+            'alert-danger': alert.type === 'danger',
+            'alert-secondary': alert.type === 'secondary'}">
 
             <span>{{alert.message}}</span>
             <button (click)="closeAlert(i)" type="button" class="btn-close"></button>

@@ -20,8 +20,6 @@ export class TodoAlertComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscription = this.alertService.getAlert().subscribe((data) => {
-      console.log(data);
-
       const newAlert: Alert = {
         message: data.message,
         type: data.type,
@@ -45,7 +43,6 @@ export class TodoAlertComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
-    this.timer$.next(0);
     this.timer$.complete();
   }
 }

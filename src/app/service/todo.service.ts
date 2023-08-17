@@ -1,9 +1,9 @@
+import { Todo } from "./../core/todo.adaper";
 import { Injectable } from "@angular/core";
 import {
   AngularFirestore,
   AngularFirestoreCollection,
 } from "@angular/fire/compat/firestore";
-import { Todo } from "../core/todo.adaper";
 
 @Injectable()
 export class TodoService {
@@ -23,7 +23,14 @@ export class TodoService {
     this.todosRef.add({ title: todo.title, completed: todo.completed });
   }
 
-  deleteTodo(id: string) {
-    this.todosRef.doc(id).delete();
+  deleteTodo(todo: Todo) {
+    this.todosRef.doc(todo.id).delete();
+  }
+
+  updateTodo(todo: Todo) {
+    this.todosRef.doc(todo.id).update({
+      title: todo.title,
+      completed: todo.completed,
+    });
   }
 }

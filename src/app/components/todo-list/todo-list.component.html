@@ -14,7 +14,7 @@
       <div (click)="viewTodo(todo)" class="todo-list" *ngFor="let todo of todos" id="{{ todo }}">
         <input type="checkbox" />
         <span>{{todo.title}}</span>
-        <i class="fas fa-edit"></i>
+        <i class="fas fa-edit" (click)="editTodo(todo, $event)"></i>
         <i class="fas fa-trash" (click)="deleteTodo(todo, $event)"></i>
       </div>
     </ng-container>

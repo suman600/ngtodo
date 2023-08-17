@@ -16,9 +16,7 @@ export class TodoViewComponent implements OnInit {
     private alertService: AlertService
   ) {}
 
-  ngOnInit(): void {
-    // console.log(this.todo);
-  }
+  ngOnInit(): void {}
   deleteTodo(todo: any) {
     if (confirm("are you sure want to delete")) {
       this.service.deleteTodo(todo.id);

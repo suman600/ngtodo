@@ -1,3 +1,4 @@
+import { Todo } from "./core/todo.adaper";
 import { ModalService } from "./service/modal.service";
 import { Component } from "@angular/core";
 
@@ -8,14 +9,17 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   todo: any;
+  editMode: boolean = false;
 
   constructor(private modalService: ModalService) {}
 
-  todoItemEvent(param: any) {
+  todoItemEvent(param: Todo) {
     this.todo = param;
-    console.log(this.todo);
   }
-
+  editTodoItemEvent(param: Todo) {
+    this.todo = param;
+    this.editMode = true;
+  }
   createTodo() {
     this.modalService.modalState(true, "Add Todo", "Add");
   }

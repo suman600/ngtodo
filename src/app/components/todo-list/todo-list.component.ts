@@ -1,3 +1,4 @@
+import { ModalService } from "./../../service/modal.service";
 import { Todo } from "./../../core/todo.adaper";
 import { AlertService } from "./../../service/alert.service";
 import { Component, EventEmitter, OnInit, Output, Type } from "@angular/core";
@@ -15,10 +16,11 @@ export class TodoListComponent implements OnInit {
   currentIndex = -1;
   loading: boolean = false;
   @Output() todoItemEvent = new EventEmitter<any>();
-
+  @Output() editTodoItemEvent = new EventEmitter<any>();
   constructor(
-    private service: TodoService,
-    private alertService: AlertService
+    private todoService: TodoService,
+    private alertService: AlertService,
+    private modalService: ModalService
   ) {}
 
   ngOnInit() {
@@ -28,7 +30,7 @@ export class TodoListComponent implements OnInit {
   }
 
   getTodos() {
-    this.service
+    this.todoService
       .getTodos()
       .snapshotChanges()
       .pipe(
@@ -48,12 +50,18 @@ export class TodoListComponent implements OnInit {
   deleteTodo(todo: any, e: any) {
     e.stopPropagation();
     if (confirm("are you sure want to delete")) {
-      this.service.deleteTodo(todo.id);
+      this.todoService.deleteTodo(todo);
       this.alertService.showAlert("Todo deleted successfully", "danger");
     }
   }
 
-  viewTodo(todo: any) {
+  viewTodo(todo: Todo) {
     this.todoItemEvent.emit(todo);
+  }
+
+  editTodo(todo: Todo, e: any) {
+    e.stopPropagation();
+    this.modalService.modalState(true, "Edit Todo", "Update");
+    this.editTodoItemEvent.emit(todo);
   }
 }
