@@ -1,7 +1,13 @@
 import { TodoService } from "src/app/service/todo.service";
 import { ModalService } from "./../../service/modal.service";
 import { AlertService } from "./../../service/alert.service";
-import { Component, Input, OnChanges, OnInit } from "@angular/core";
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 @Component({
@@ -9,7 +15,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
   templateUrl: "./todo-modal.component.html",
   styleUrls: ["./todo-modal.component.scss"],
 })
-export class TodoModalComponent implements OnInit {
+export class TodoModalComponent implements OnInit, OnChanges {
   show: boolean = false;
   action: string = "";
   title: string = "";
@@ -24,15 +30,9 @@ export class TodoModalComponent implements OnInit {
     private todoSerive: TodoService,
     private alertService: AlertService
   ) {
-    if (!this.editMode) {
-      this.todoForm = this.fb.group({
-        todoText: ["", [Validators.required, Validators.minLength(2)]],
-      });
-    } else {
-      this.todoForm = this.fb.group({
-        todoText: [this.todo.title],
-      });
-    }
+    this.todoForm = this.fb.group({
+      todoText: ["", [Validators.required, Validators.minLength(2)]],
+    });
   }
 
   ngOnInit(): void {
@@ -58,8 +58,7 @@ export class TodoModalComponent implements OnInit {
 
   addTodo() {
     let title = this.todoForm.value.todoText;
-    let completed = false;
-    this.todoSerive.createTodo({ title: title, completed: completed });
+    this.todoSerive.createTodo({ title: title, completed: false });
     this.modalClose();
     this.alertService.showAlert("Todo added successfully", "success");
   }
@@ -71,5 +70,13 @@ export class TodoModalComponent implements OnInit {
     this.todoSerive.updateTodo({ id: id, title: title, completed: completed });
     this.modalClose();
     this.alertService.showAlert("Todo updated successfully", "success");
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (this.editMode) {
+      this.todoForm = this.fb.group({
+        todoText: [this.todo.title],
+      });
+    }
   }
 }

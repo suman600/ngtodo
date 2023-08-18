@@ -30,7 +30,7 @@ export class TodoAlertComponent implements OnInit, OnDestroy {
   }
 
   closeAlert(i: any) {
-    delete this.alerts[i];
+    this.alerts.splice(i, 1);
   }
 
   autoClose() {
