@@ -19,14 +19,17 @@ export class TodoAlertComponent implements OnInit, OnDestroy {
   constructor(public alertService: AlertService) {}
 
   ngOnInit(): void {
+    console.log("TodoAlertComponent mounted");
+
     this.subscription = this.alertService.getAlert().subscribe((data) => {
       const newAlert: Alert = {
         message: data.message,
         type: data.type,
       };
       this.alerts.push(newAlert);
+      console.log({ alerts: this.alerts });
+      this.autoClose();
     });
-    this.autoClose();
   }
 
   closeAlert(i: any) {
@@ -34,16 +37,15 @@ export class TodoAlertComponent implements OnInit, OnDestroy {
   }
 
   autoClose() {
-    interval(6000)
-      .pipe(takeUntil(this.timer$))
-      .subscribe(() => {
-        this.alerts.shift();
-      });
+    setTimeout(() => {
+      console.log(this.alerts);
+
+      this.alerts.shift();
+    }, 3000);
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
-    this.timer$.complete();
   }
 }
 

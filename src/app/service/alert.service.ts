@@ -1,15 +1,21 @@
 import { Injectable } from "@angular/core";
-import { Observable, Subject } from "rxjs";
+import { BehaviorSubject, Observable, Subject } from "rxjs";
 
 @Injectable()
 export class AlertService {
-  subject = new Subject<any>();
+  subject = new BehaviorSubject<any>("");
+
+  constructor() {
+    console.log("AlertSevice mounted");
+  }
 
   getAlert(): Observable<any> {
     return this.subject.asObservable();
   }
 
   showAlert(message: string, type: string) {
+    console.log({ message, type });
+
     this.subject.next({ message: message, type: type });
   }
 }
