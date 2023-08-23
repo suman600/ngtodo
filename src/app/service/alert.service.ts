@@ -14,8 +14,6 @@ export class AlertService {
   }
 
   showAlert(message: string, type: string) {
-    console.log({ message, type });
-
     this.subject.next({ message: message, type: type });
   }
 }

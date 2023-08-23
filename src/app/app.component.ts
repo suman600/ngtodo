@@ -8,17 +8,19 @@ import { Component } from "@angular/core";
   styleUrls: ["./app.component.scss"],
 })
 export class AppComponent {
-  todo: any;
+  modalTodo: any;
+  viewTodo: any
   editMode: boolean = false;
 
   constructor(private modalService: ModalService) {}
 
-  todoItemEvent(param: Todo) {
-    this.todo = param;
-  }
-  editTodoItemEvent(param: Todo) {
-    this.todo = param;
-    this.editMode = true;
+  todoItemEvent({mode, todo}: {mode:string, todo: Todo}) {
+    if (mode == "viewMode") {
+      this.viewTodo = todo;
+    } else {
+      this.modalTodo = todo;
+      this.editMode= true
+    }
   }
   createTodo() {
     this.modalService.modalState(true, "Add Todo", "Add");

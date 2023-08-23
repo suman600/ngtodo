@@ -9,6 +9,7 @@ import { TodoService } from "src/app/service/todo.service";
 })
 export class TodoViewComponent implements OnInit {
   @Input() todo: any;
+  @Input() viewMode: any;
 
   constructor(
     private service: TodoService,

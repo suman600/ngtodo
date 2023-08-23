@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="d1d49c1a-c5d5-4be6-ae35-eeb7c850086f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/application-states/todo.action.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/application-states/todo.action.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/application-states/todo.effects.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/application-states/todo.effects.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/application-states/todo.reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/application-states/todo.reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/core/mapping-framework.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/core/projector.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/core/todo-model.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/core/todo.adaper.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/core/todo.adaper.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/core/todo.type.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/core/validator.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/service/todo.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/service/todo.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/todo-page/components/todo-list/todo-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/todo-page/components/todo-list/todo-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/todo-list/todo-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/todo-list/todo-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/todo-list/todo-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/todo-list/todo-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/todo-modal/todo-modal.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/todo-modal/todo-modal.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/todo-view/todo-view.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/todo-view/todo-view.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/service/alert.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/service/alert.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/todo-alert/todo-alert.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/todo-alert/todo-alert.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -26,6 +29,7 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="PhpDebugGeneral" listening_started="true" />
   <component name="ProjectId" id="2EMSTCwrhSo69ejFe99LWxk6d12" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -37,10 +41,15 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
     "last_opened_file_path": "/Users/testbook/Desktop/ngtodo",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.Color Scheme Font",
-    "ts.external.directory.path": "/Applications/WebStorm.app/Contents/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
+    "ts.external.directory.path": "/Users/testbook/Desktop/ngtodo/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -61,6 +70,7 @@
       <workItem from="1662407371092" duration="459000" />
       <workItem from="1662435654400" duration="8143000" />
       <workItem from="1662457434995" duration="31000" />
+      <workItem from="1692771703485" duration="2530000" />
     </task>
     <servers />
   </component>
@@ -77,5 +87,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

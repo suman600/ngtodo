@@ -1,13 +1,7 @@
 import { TodoService } from "src/app/service/todo.service";
-import { ModalService } from "./../../service/modal.service";
-import { AlertService } from "./../../service/alert.service";
-import {
-  Component,
-  Input,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
-} from "@angular/core";
+import { ModalService } from "../../service/modal.service";
+import { AlertService } from "../../service/alert.service";
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 @Component({
@@ -23,7 +17,6 @@ export class TodoModalComponent implements OnInit, OnChanges {
   todoForm: FormGroup;
   @Input() todo: any;
   @Input() editMode: boolean = false;
-
   constructor(
     private modalService: ModalService,
     private fb: FormBuilder,

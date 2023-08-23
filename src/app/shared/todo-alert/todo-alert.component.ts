@@ -2,8 +2,6 @@ import { Alert } from "./../../core/todo.adaper";
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Subject, Subscription } from "rxjs";
 import { AlertService } from "../../service/alert.service";
-import { timer, interval } from "rxjs";
-import { takeUntil } from "rxjs/operators";
 
 @Component({
   selector: "app-todo-alert",
@@ -27,7 +25,6 @@ export class TodoAlertComponent implements OnInit, OnDestroy {
         type: data.type,
       };
       this.alerts.push(newAlert);
-      console.log({ alerts: this.alerts });
       this.autoClose();
     });
   }
@@ -38,9 +35,7 @@ export class TodoAlertComponent implements OnInit, OnDestroy {
 
   autoClose() {
     setTimeout(() => {
-      console.log(this.alerts);
-
-      this.alerts.shift();
+      this.alerts.pop();
     }, 3000);
   }
 
@@ -48,9 +43,3 @@ export class TodoAlertComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 }
-
-// setTimeout(() => {
-//   this.alerts.filter((currentAlert, index) => {
-//     this.alerts.shift();
-//   });
-// }, 2000);

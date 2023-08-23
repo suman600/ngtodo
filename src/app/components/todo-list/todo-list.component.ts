@@ -16,7 +16,7 @@ export class TodoListComponent implements OnInit {
   currentIndex = -1;
   loading: boolean = false;
   @Output() todoItemEvent = new EventEmitter<any>();
-  @Output() editTodoItemEvent = new EventEmitter<any>();
+  // @Output() editTodoItemEvent = new EventEmitter<any>();
   constructor(
     private todoService: TodoService,
     private alertService: AlertService,
@@ -25,7 +25,7 @@ export class TodoListComponent implements OnInit {
 
   ngOnInit() {
     this.loading = true;
-    this.alertService.showAlert("Data fetching....", "success");
+    this.alertService.showAlert("Loading pls wait....", "success");
     this.getTodos();
   }
 
@@ -56,12 +56,12 @@ export class TodoListComponent implements OnInit {
   }
 
   viewTodo(todo: Todo) {
-    this.todoItemEvent.emit(todo);
+    this.todoItemEvent.emit({mode: 'viewMode', todo});
   }
 
   editTodo(todo: Todo, e: any) {
     e.stopPropagation();
     this.modalService.modalState(true, "Edit Todo", "Update");
-    this.editTodoItemEvent.emit(todo);
+    this.todoItemEvent.emit({mode: 'editMode', todo});
   }
 }
