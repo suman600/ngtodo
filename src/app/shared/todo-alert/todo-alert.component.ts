@@ -1,6 +1,6 @@
-import { Alert } from "./../../core/todo.adaper";
+import { Alert } from "../../core/todo.adaper";
 import { Component, OnDestroy, OnInit } from "@angular/core";
-import { Subject, Subscription } from "rxjs";
+import { Subscription } from "rxjs";
 import { AlertService } from "../../service/alert.service";
 
 @Component({
@@ -13,18 +13,17 @@ export class TodoAlertComponent implements OnInit, OnDestroy {
   message: string = "";
   alerts: Alert[] = [];
   subscription = new Subscription();
-  timer$ = new Subject();
   constructor(public alertService: AlertService) {}
 
   ngOnInit(): void {
-    console.log("TodoAlertComponent mounted");
-
     this.subscription = this.alertService.getAlert().subscribe((data) => {
-      const newAlert: Alert = {
-        message: data.message,
-        type: data.type,
-      };
-      this.alerts.push(newAlert);
+      if (data){
+        const newAlert: Alert = {
+          message: data.message,
+          type: data.type,
+        };
+        this.alerts.push(newAlert);
+      }
       this.autoClose();
     });
   }
@@ -36,7 +35,7 @@ export class TodoAlertComponent implements OnInit, OnDestroy {
   autoClose() {
     setTimeout(() => {
       this.alerts.pop();
-    }, 3000);
+    }, 2000);
   }
 
   ngOnDestroy() {
