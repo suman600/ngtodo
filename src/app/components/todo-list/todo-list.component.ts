@@ -1,9 +1,10 @@
-import { ModalService } from "./../../service/modal.service";
-import { Todo } from "./../../core/todo.adaper";
-import { AlertService } from "./../../service/alert.service";
-import { Component, EventEmitter, OnInit, Output, Type } from "@angular/core";
+import { ModalService } from "../../service/modal.service";
+import { Todo } from "../../core/todo.adaper";
+import { AlertService } from "../../service/alert.service";
+import {Component, EventEmitter, OnInit, Output} from "@angular/core";
 import { map } from "rxjs";
 import { TodoService } from "src/app/service/todo.service";
+import {LoaderService} from "../../service/laoder.service";
 
 @Component({
   selector: "app-todo-list",
@@ -13,23 +14,22 @@ import { TodoService } from "src/app/service/todo.service";
 export class TodoListComponent implements OnInit {
   todos?: Todo[];
   todo?: Todo;
-  currentIndex = -1;
   loading: boolean = false;
   @Output() todoItemEvent = new EventEmitter<any>();
-  // @Output() editTodoItemEvent = new EventEmitter<any>();
   constructor(
     private todoService: TodoService,
     private alertService: AlertService,
-    private modalService: ModalService
+    private modalService: ModalService,
+    private loaderService: LoaderService
   ) {}
 
   ngOnInit() {
-    this.loading = true;
-    this.alertService.showAlert("Loading pls wait....", "success");
     this.getTodos();
   }
 
   getTodos() {
+    this.loaderService.loaderBehaviour({show: true, title: 'Loading...'})
+    this.loading = true;
     this.todoService
       .getTodos()
       .snapshotChanges()
@@ -44,11 +44,11 @@ export class TodoListComponent implements OnInit {
       .subscribe((data) => {
         this.todos = data;
         this.loading = false;
+        this.loaderService.loaderBehaviour({show: false, title: ''})
       });
   }
 
-  deleteTodo(todo: any, e: any) {
-    e.stopPropagation();
+  deleteTodo(todo: Todo) {
     if (confirm("are you sure want to delete")) {
       this.todoService.deleteTodo(todo);
       this.alertService.showAlert("Todo deleted successfully", "danger");
@@ -59,8 +59,7 @@ export class TodoListComponent implements OnInit {
     this.todoItemEvent.emit({mode: 'viewMode', todo});
   }
 
-  editTodo(todo: Todo, e: any) {
-    e.stopPropagation();
+  editTodo(todo: Todo) {
     this.modalService.modalState(true, "Edit Todo", "Update");
     this.todoItemEvent.emit({mode: 'editMode', todo});
   }

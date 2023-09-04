@@ -14,3 +14,8 @@ export interface Modal {
   title: string;
   action: string;
 }
+
+export interface Loader {
+  show: boolean;
+  title: string;
+}

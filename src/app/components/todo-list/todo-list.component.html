@@ -10,11 +10,11 @@
     </ng-container>
 
     <ng-container *ngIf="!loading">
-      <div (click)="viewTodo(todo)" class="todo-list" *ngFor="let todo of todos" id="{{ todo }}">
+      <div class="todo-list" *ngFor="let todo of todos" id="{{ todo.id }}">
         <input type="checkbox" />
-        <span>{{todo.title}}</span>
-        <i class="fas fa-edit" (click)="editTodo(todo, $event)"></i>
-        <i class="fas fa-trash" (click)="deleteTodo(todo, $event)"></i>
+        <span (click)="viewTodo(todo)">{{todo.title}}</span>
+        <i class="fas fa-edit" (click)="editTodo(todo)"></i>
+        <i class="fas fa-trash" (click)="deleteTodo(todo)"></i>
       </div>
     </ng-container>
     <ng-container *ngIf="!todos?.length && !loading">

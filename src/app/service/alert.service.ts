@@ -5,9 +5,7 @@ import { BehaviorSubject, Observable, Subject } from "rxjs";
 export class AlertService {
   subject = new BehaviorSubject<any>("");
 
-  constructor() {
-    console.log("AlertSevice mounted");
-  }
+  constructor() {}
 
   getAlert(): Observable<any> {
     return this.subject.asObservable();

@@ -15,6 +15,8 @@ import { TodoModalComponent } from "./components/todo-modal/todo-modal.component
 import { TodoViewComponent } from "./components/todo-view/todo-view.component";
 import { TodoAlertComponent } from "./shared/todo-alert/todo-alert.component";
 import { TodoService } from "./service/todo.service";
+import {LoaderComponent} from "./shared/loader/loader.component";
+import {LoaderService} from "./service/laoder.service";
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { TodoService } from "./service/todo.service";
     TodoViewComponent,
     TodoModalComponent,
     TodoAlertComponent,
+    LoaderComponent
   ],
 
   imports: [
@@ -35,7 +38,7 @@ import { TodoService } from "./service/todo.service";
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
   ],
-  providers: [TodoService, AlertService, ModalService],
+  providers: [TodoService, AlertService, ModalService, LoaderService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

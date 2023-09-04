@@ -3,6 +3,7 @@ import { ModalService } from "../../service/modal.service";
 import { AlertService } from "../../service/alert.service";
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import {Todo} from "../../core/todo.adaper";
 
 @Component({
   selector: "app-todo-modal",
@@ -17,6 +18,8 @@ export class TodoModalComponent implements OnInit, OnChanges {
   todoForm: FormGroup;
   @Input() todo: any;
   @Input() editMode: boolean = false;
+  @Output()  todoUpdatedEvent = new EventEmitter<any>();
+
   constructor(
     private modalService: ModalService,
     private fb: FormBuilder,
@@ -57,12 +60,15 @@ export class TodoModalComponent implements OnInit, OnChanges {
   }
 
   updateTodo() {
-    let id = this.todo.id;
-    let title = this.todoForm.value.todoText;
-    let completed = this.todo.completed;
-    this.todoSerive.updateTodo({ id: id, title: title, completed: completed });
+    let todo: Todo = {
+      id:this.todo.id,
+      title:this.todoForm.value.todoText,
+      completed:this.todo.completed
+    }
+    this.todoSerive.updateTodo(todo);
     this.modalClose();
     this.alertService.showAlert("Todo updated successfully", "success");
+    this.todoUpdatedEvent.emit({mode: 'updateMode', todo});
   }
 
   ngOnChanges(changes: SimpleChanges): void {
