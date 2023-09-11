@@ -25,6 +25,9 @@ export class AppComponent {
     if (this.viewTodo && mode == "updateMode") {
       this.viewTodo = todo;
     }
+    if(mode =='updateMode'){
+      this.editMode = false;
+    }
   }
   createTodo() {
     this.modalService.modalState(true, "Add Todo", "Add");

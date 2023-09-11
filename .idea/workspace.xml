@@ -8,15 +8,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/todo-list/todo-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/todo-list/todo-list.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/todo-list/todo-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/todo-list/todo-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/todo-modal/todo-modal.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/todo-modal/todo-modal.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/components/todo-modal/todo-modal.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/todo-modal/todo-modal.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/todo-view/todo-view.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/todo-view/todo-view.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/todo-view/todo-view.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/todo-view/todo-view.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/core/todo.adaper.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/core/todo.adaper.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/service/alert.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/service/alert.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/service/laoder.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/service/laoder.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +69,12 @@
       <workItem from="1692771703485" duration="2587000" />
       <workItem from="1693290675821" duration="6919000" />
       <workItem from="1693460540313" duration="6627000" />
-      <workItem from="1693806561647" duration="1894000" />
+      <workItem from="1693806561647" duration="2480000" />
+      <workItem from="1693848084402" duration="599000" />
+      <workItem from="1693888809980" duration="1126000" />
+      <workItem from="1693981114050" duration="5115000" />
+      <workItem from="1694002508716" duration="3358000" />
+      <workItem from="1694413445103" duration="6093000" />
     </task>
     <servers />
   </component>

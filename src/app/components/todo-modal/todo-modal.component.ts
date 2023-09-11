@@ -1,8 +1,18 @@
 import { TodoService } from "src/app/service/todo.service";
 import { ModalService } from "../../service/modal.service";
 import { AlertService } from "../../service/alert.service";
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from "@angular/core";
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import {
+  AfterViewChecked,
+  AfterViewInit,
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges
+} from "@angular/core";
+import {FormGroup, FormBuilder, Validators, AbstractControl} from "@angular/forms";
 import {Todo} from "../../core/todo.adaper";
 
 @Component({
@@ -10,7 +20,7 @@ import {Todo} from "../../core/todo.adaper";
   templateUrl: "./todo-modal.component.html",
   styleUrls: ["./todo-modal.component.scss"],
 })
-export class TodoModalComponent implements OnInit, OnChanges {
+export class TodoModalComponent implements OnInit, OnChanges{
   show: boolean = false;
   action: string = "";
   title: string = "";
@@ -18,7 +28,7 @@ export class TodoModalComponent implements OnInit, OnChanges {
   todoForm: FormGroup;
   @Input() todo: any;
   @Input() editMode: boolean = false;
-  @Output()  todoUpdatedEvent = new EventEmitter<any>();
+  @Output() todoUpdatedEvent = new EventEmitter<any>();
 
   constructor(
     private modalService: ModalService,
@@ -50,6 +60,7 @@ export class TodoModalComponent implements OnInit, OnChanges {
   modalClose() {
     this.todoForm.reset();
     this.modalService.modalState(false, "", "");
+    this.editMode = false;
   }
 
   addTodo() {
@@ -74,8 +85,22 @@ export class TodoModalComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (this.editMode) {
       this.todoForm = this.fb.group({
-        todoText: [this.todo.title],
+        todoText: [this.todo.title, [this.customValidateTitle]
+        ],
       });
     }
   }
+
+  customValidateTitle = () => {
+    if(this.editMode) {
+      if(this.todoForm.value.todoText == this.todo.title) {
+        return {invalidTitle: true};
+      } else {
+        return null;
+      }
+    } else {
+      return null;
+    }
+  }
 }
+
