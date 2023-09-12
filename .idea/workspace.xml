@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d1d49c1a-c5d5-4be6-ae35-eeb7c850086f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/todo-modal/todo-modal.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/todo-modal/todo-modal.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/components/todo-modal/todo-modal.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/todo-modal/todo-modal.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -26,6 +23,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="PhpDebugGeneral" listening_started="true" />
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="/opt/homebrew/Cellar/php/8.2.10/bin/php" />
   <component name="ProjectId" id="2EMSTCwrhSo69ejFe99LWxk6d12" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -74,7 +72,8 @@
       <workItem from="1693888809980" duration="1126000" />
       <workItem from="1693981114050" duration="5115000" />
       <workItem from="1694002508716" duration="3358000" />
-      <workItem from="1694413445103" duration="6093000" />
+      <workItem from="1694413445103" duration="6398000" />
+      <workItem from="1694501661315" duration="2410000" />
     </task>
     <servers />
   </component>

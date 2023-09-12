@@ -2,8 +2,6 @@ import { TodoService } from "src/app/service/todo.service";
 import { ModalService } from "../../service/modal.service";
 import { AlertService } from "../../service/alert.service";
 import {
-  AfterViewChecked,
-  AfterViewInit,
   Component,
   EventEmitter,
   Input,
@@ -12,7 +10,7 @@ import {
   Output,
   SimpleChanges
 } from "@angular/core";
-import {FormGroup, FormBuilder, Validators, AbstractControl} from "@angular/forms";
+import {FormGroup, FormBuilder, Validators} from "@angular/forms";
 import {Todo} from "../../core/todo.adaper";
 
 @Component({
@@ -85,15 +83,14 @@ export class TodoModalComponent implements OnInit, OnChanges{
   ngOnChanges(changes: SimpleChanges): void {
     if (this.editMode) {
       this.todoForm = this.fb.group({
-        todoText: [this.todo.title, [this.customValidateTitle]
-        ],
+        todoText: [this.todo.title, [Validators.required, Validators.minLength(2), this.customValidateTitle]],
       });
     }
   }
 
   customValidateTitle = () => {
     if(this.editMode) {
-      if(this.todoForm.value.todoText == this.todo.title) {
+      if(this.todoForm.get('todoText')?.value == this.todo.title) {
         return {invalidTitle: true};
       } else {
         return null;
