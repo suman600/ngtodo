@@ -27,6 +27,7 @@ export class TodoModalComponent implements OnInit, OnChanges{
   @Input() todo: any;
   @Input() editMode: boolean = false;
   @Output() todoUpdatedEvent = new EventEmitter<any>();
+  @Output() todoClosedEvent = new EventEmitter<any>();
 
   constructor(
     private modalService: ModalService,
@@ -59,6 +60,7 @@ export class TodoModalComponent implements OnInit, OnChanges{
     this.todoForm.reset();
     this.modalService.modalState(false, "", "");
     this.editMode = false;
+    this.todoClosedEvent.emit({mode: 'closeMode'});
   }
 
   addTodo() {

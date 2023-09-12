@@ -15,17 +15,19 @@ export class AppComponent {
   constructor(private modalService: ModalService) {}
 
   todoItemEvent({ mode, todo }: { mode: string; todo: Todo }) {
+    debugger
     if (mode == "editMode") {
       this.editTodo = todo;
       this.editMode = true;
     }
     if (mode == "viewMode") {
       this.viewTodo = todo;
+      this.editMode = false;
     }
     if (this.viewTodo && mode == "updateMode") {
       this.viewTodo = todo;
     }
-    if(mode =='updateMode'){
+    if(mode =='closeMode'){
       this.editMode = false;
     }
   }
