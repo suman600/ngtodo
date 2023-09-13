@@ -48,6 +48,17 @@
   &:last-child {
     border: 0;
   }
+  &--completed{
+    opacity: .3;
+    span{
+      text-decoration: line-through;
+    }
+  }
+  &.in{
+    opacity: .3;
+    background: rgb(156 156 160 / 10%);
+    pointer-events: none;
+  }
 
 }
 

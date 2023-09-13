@@ -10,12 +10,23 @@
     </ng-container>
 
     <ng-container *ngIf="!loading">
-      <div class="todo-list" *ngFor="let todo of todos" id="{{ todo.id }}">
-        <input type="checkbox" />
-        <span (click)="viewTodo(todo)">{{todo.title}}</span>
-        <i class="fas fa-edit" (click)="editTodo(todo)"></i>
-        <i class="fas fa-trash" (click)="deleteTodo(todo)"></i>
-      </div>
+      <ng-container *ngFor="let todo of todos">
+        <div class="todo-list"
+             [ngClass]="{
+             'todo-list--completed': todo.completed,
+             'in': disabled,
+             'out' : enabled}"
+             *ngIf="!todo.completed" >
+          <input type="checkbox"
+                 id="{{todo.id}}"
+                 (change)="completeTodo(todo)"
+                 [checked]="todo.completed"/>
+          <span (click)="viewTodo(todo)">{{todo.title}}</span>
+          <i class="fas fa-edit" (click)="editTodo(todo)"></i>
+          <i class="fas fa-trash" (click)="deleteTodo(todo)"></i>
+        </div>
+      </ng-container>
+
     </ng-container>
     <ng-container *ngIf="!todos?.length && !loading">
       <div class="todo-list card--empty">

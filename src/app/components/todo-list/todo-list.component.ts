@@ -15,6 +15,8 @@ export class TodoListComponent implements OnInit {
   todos?: Todo[];
   todo?: Todo;
   loading: boolean = false;
+  disabled:boolean = false
+  enabled:boolean = false
   @Output() todoItemEvent = new EventEmitter<any>();
   constructor(
     private todoService: TodoService,
@@ -63,4 +65,19 @@ export class TodoListComponent implements OnInit {
     this.modalService.modalState(true, "Edit Todo", "Update");
     this.todoItemEvent.emit({mode: 'editMode', todo});
   }
+  completeTodo(todo: Todo){
+    this.disabled = !todo.completed
+    this.enabled = todo.completed
+    let _todo: Todo = {
+      id: todo.id,
+      title: todo.title,
+      completed: !todo.completed
+    }
+    setTimeout(()=>{
+      this.disabled = false;
+      this.disabled = false;
+      this.todoService.updateTodo(_todo)
+    },2000)
+  }
+
 }

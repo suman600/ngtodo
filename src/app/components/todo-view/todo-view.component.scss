@@ -8,6 +8,10 @@
 
   &-body {
     padding: 25px;
+    &--completed{
+      opacity: .3;
+      text-decoration: line-through;
+    }
   }
 
   &__empty {

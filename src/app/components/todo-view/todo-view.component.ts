@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from "@angular/core";
 import { AlertService } from "src/app/service/alert.service";
 import { TodoService } from "src/app/service/todo.service";
 import {Todo} from "../../core/todo.adaper";
@@ -22,8 +22,7 @@ export class TodoViewComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  editTodo(todo: Todo, e: any) {
-    e.stopPropagation();
+  editTodo(todo: Todo) {
     this.modalService.modalState(true, "Edit Todo", "Update");
     this.todoViewEvent.emit({mode: 'editMode', todo});
   }

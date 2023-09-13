@@ -15,7 +15,6 @@ export class AppComponent {
   constructor(private modalService: ModalService) {}
 
   todoItemEvent({ mode, todo }: { mode: string; todo: Todo }) {
-    debugger
     if (mode == "editMode") {
       this.editTodo = todo;
       this.editMode = true;
