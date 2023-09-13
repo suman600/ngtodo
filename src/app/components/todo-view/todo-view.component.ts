@@ -13,7 +13,7 @@ export class TodoViewComponent implements OnInit {
   @Input() todo: any;
   @Input() viewMode: any;
   @Output() todoViewEvent = new EventEmitter<any>();
-
+  @Input() activeTab: string = '';
   constructor(
     private service: TodoService,
     private alertService: AlertService,

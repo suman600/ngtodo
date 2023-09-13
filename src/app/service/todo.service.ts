@@ -33,4 +33,14 @@ export class TodoService {
       completed: todo.completed,
     });
   }
+
+  completeAllTodo(todos:Todo[]) {
+    todos.forEach((todo:Todo)=>{
+      this.todosRef.doc(todo.id).update({
+        title: todo.title,
+        completed: todo.completed,
+      });
+    })
+
+  }
 }

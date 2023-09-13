@@ -1,19 +1,23 @@
 <div class="page-layout">
     <div class="card card--action">
         <div class="card-body">
-            <button class="btn btn-success btn-block" (click)="createTodo()">
+            <button class="btn btn-success btn-block" (click)="addTodo()">
                 Create New Task
             </button>
             <div class="todo-action">
-                <div class="active"><i class="fas fa-bars"></i>All</div>
-                <div class=""><i class="fas fa-check"></i>Completed</div>
+                <ng-container *ngFor="let tab of tabs; index as i">
+                    <div (click)="activeTabFun(tab)"
+                         [ngClass]="{'active': activeTab ==  tab.text}">
+                        <i class="{{tab.icon}}"></i>{{tab.text}}
+                    </div>
+                </ng-container>
             </div>
         </div>
     </div>
     <div class="card card--header-action">
         <div class="card-body">
             <div class="action-header">
-                <button class="btn btn-primary">
+                <button class="btn btn-primary" (click)="completeAll()">
                     <i class="fas fa-check"></i>Complete All
                 </button>
                 <button class="btn btn-danger">
@@ -22,8 +26,8 @@
             </div>
         </div>
     </div>
-    <app-todo-list (todoItemEvent)="todoItemEvent($event)"></app-todo-list>
-    <app-todo-view [todo]="viewTodo" (todoViewEvent)="todoItemEvent($event)"></app-todo-view>
+    <app-todo-list (todoItemEvent)="todoItemEvent($event)" [activeTab]="activeTab"></app-todo-list>
+    <app-todo-view [todo]="viewTodo" (todoViewEvent)="todoItemEvent($event)" [activeTab]="activeTab"></app-todo-view>
 </div>
 <app-todo-modal [todo]="editTodo" [editMode]="editMode" (todoUpdatedEvent)="todoItemEvent($event)" (todoClosedEvent)="todoItemEvent($event)"></app-todo-modal>
 <app-todo-alert></app-todo-alert>

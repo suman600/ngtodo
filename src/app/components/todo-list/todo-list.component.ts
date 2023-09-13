@@ -1,7 +1,7 @@
 import { ModalService } from "../../service/modal.service";
 import { Todo } from "../../core/todo.adaper";
 import { AlertService } from "../../service/alert.service";
-import {Component, EventEmitter, OnInit, Output} from "@angular/core";
+import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
 import { map } from "rxjs";
 import { TodoService } from "src/app/service/todo.service";
 import {LoaderService} from "../../service/laoder.service";
@@ -18,6 +18,7 @@ export class TodoListComponent implements OnInit {
   disabled:boolean = false
   enabled:boolean = false
   @Output() todoItemEvent = new EventEmitter<any>();
+  @Input() activeTab:string = '';
   constructor(
     private todoService: TodoService,
     private alertService: AlertService,
@@ -66,18 +67,18 @@ export class TodoListComponent implements OnInit {
     this.todoItemEvent.emit({mode: 'editMode', todo});
   }
   completeTodo(todo: Todo){
-    this.disabled = !todo.completed
-    this.enabled = todo.completed
+    let ele:any = document.getElementById(<string>todo.id);
+    !todo.completed ?  ele.classList.add('in') : ele.classList.add('out')
     let _todo: Todo = {
       id: todo.id,
       title: todo.title,
       completed: !todo.completed
     }
     setTimeout(()=>{
-      this.disabled = false;
-      this.disabled = false;
-      this.todoService.updateTodo(_todo)
-    },2000)
+      ele.classList.remove('in');
+      ele.classList.remove('out');
+      this.todoService.updateTodo(_todo);
+    },1000)
   }
 
 }
