@@ -14,11 +14,12 @@ import {LoaderService} from "../../service/laoder.service";
 export class TodoListComponent implements OnInit {
   todos?: Todo[];
   todo?: Todo;
-  loading: boolean = false;
-  disabled:boolean = false
-  enabled:boolean = false
+  loading:boolean = false;
+  disabled:boolean = false;
   @Output() todoItemEvent = new EventEmitter<any>();
   @Input() activeTab:string = '';
+  @Input() finishAll:boolean = false;
+  @Output() todoViewEvent = new EventEmitter<any>();
   constructor(
     private todoService: TodoService,
     private alertService: AlertService,
@@ -59,12 +60,12 @@ export class TodoListComponent implements OnInit {
   }
 
   viewTodo(todo: Todo) {
-    this.todoItemEvent.emit({mode: 'viewMode', todo});
+    this.todoItemEvent.emit({mode: 'viewMode', todo: todo});
   }
 
   editTodo(todo: Todo) {
     this.modalService.modalState(true, "Edit Todo", "Update");
-    this.todoItemEvent.emit({mode: 'editMode', todo});
+    this.todoItemEvent.emit({mode: 'editMode', todo: todo});
   }
   completeTodo(todo: Todo){
     let ele:any = document.getElementById(<string>todo.id);
@@ -74,11 +75,16 @@ export class TodoListComponent implements OnInit {
       title: todo.title,
       completed: !todo.completed
     }
+    this.disabled = true;
+    this.todoViewEvent.emit({mode: 'checkMode', todo:_todo});
+
     setTimeout(()=>{
       ele.classList.remove('in');
       ele.classList.remove('out');
       this.todoService.updateTodo(_todo);
-    },1000)
+      this.todoItemEvent.emit({mode: 'completedMode', todo:null});
+      this.disabled = false;
+    },_todo.completed ? 500 : 300)
   }
 
 }

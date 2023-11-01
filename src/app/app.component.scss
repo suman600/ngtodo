@@ -88,3 +88,8 @@ app-todo-view {
         gap: 1rem;
     }
 }
+.completed-all{
+    opacity: .3;
+    pointer-events: none;
+    transition: all .3s;
+}

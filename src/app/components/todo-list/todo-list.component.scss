@@ -1,11 +1,12 @@
 .card {
-  box-shadow: 0 0 1.25rem rgb(31 45 61 / 8%);
+  box-shadow: 0 0 1.25rem rgb(31 45 61 / 2%);
   margin-bottom: 20px;
   border: 0 !important;
   border-radius: 10px;
-  transition: background .2s ease-in-out;
   min-height: 300px;
+  transition: all .3s;
   overflow: hidden;
+  animation: show .5s forwards;
 
   &-body {
     padding: 0;
@@ -13,9 +14,10 @@
   }
 
   &--empty {
-    padding: 2rem;
-    height: 240px;
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0;
     i {
       font-size: 100px;
       position: absolute;
@@ -55,6 +57,10 @@
       text-decoration: line-through;
     }
   }
+  &--disabled{
+    opacity: .7;
+    pointer-events: none;
+  }
   &.in{
     background: rgba(#e8e8e8, 35%);
     pointer-events: none;
@@ -80,4 +86,15 @@ input[type=checkbox] {
 .card-loading {
   display: flex;
   min-height: 300px;
+}
+
+@keyframes show {
+  from{
+    transform: scale(.95);
+    opacity: 0;
+  }
+  to{
+    transform: scale(1);
+    opacity: 1;
+  }
 }

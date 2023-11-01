@@ -1,4 +1,4 @@
-<div class="card" *ngIf="loading" style="width: 100%;">
+<div class="card" *ngIf="loading">
   <div class="card-body">
     <div class="todo-list skeleton" *ngFor="let todo of [0,1,2,4]">
       <div class="sk-aim" style="width: 20px;height:20px"></div>
@@ -9,51 +9,47 @@
   </div>
 </div>
 
-<div class="card" *ngIf="!todos?.length && !loading">
+<div class="card card--empty" *ngIf="!todos?.length && !loading">
   <div class="card-body">
-    <div class="todo-list card--empty">
-      <i class="fas fa-duotone fa-trash"></i>
-    </div>
+    <i class="fas fa-duotone fa-trash"></i>
   </div>
 </div>
 
-<div class="card" *ngIf="!loading">
-  <ng-container *ngIf="activeTab == 'All'">
+
+  <div class="card" *ngIf="activeTab == 'All' && !loading && todos?.length">
     <ng-container *ngFor="let todo of todos">
       <ng-container *ngIf="!todo.completed">
         <div class="todo-list" id="{{todo.id}}"
              [ngClass]="{
              'todo-list--completed': todo.completed,
-             'in': disabled,
-             'out' : enabled}">
+             'todo-list--disabled': disabled || finishAll}">
           <input type="checkbox"
                  id="{{todo.id}}"
                  (change)="completeTodo(todo)"
-                 [checked]="todo.completed"/>
+                 [checked]="todo.completed || finishAll"/>
           <span (click)="viewTodo(todo)">{{todo.title}}</span>
           <i class="fas fa-edit" (click)="editTodo(todo)"></i>
           <i class="fas fa-trash" (click)="deleteTodo(todo)"></i>
         </div>
       </ng-container>
     </ng-container>
-  </ng-container>
+  </div>
 
-  <ng-container *ngIf="activeTab == 'Completed'">
+  <div class="card" *ngIf="activeTab == 'Completed' && !loading && todos?.length">
     <ng-container *ngFor="let todo of todos">
       <ng-container *ngIf="todo.completed">
         <div class="todo-list" id="{{todo.id}}"
              [ngClass]="{
              'todo-list--completed': todo.completed,
-             'in': disabled,
-             'out' : enabled}">
+             'todo-list--disabled': disabled || finishAll}">
           <input type="checkbox"
                  id="{{todo.id}}"
                  (change)="completeTodo(todo)"
-                 [checked]="todo.completed"/>
+                 [checked]="todo.completed || finishAll"/>
           <span (click)="viewTodo(todo)">{{todo.title}}</span>
           <i class="fas fa-trash" (click)="deleteTodo(todo)"></i>
         </div>
       </ng-container>
     </ng-container>
-  </ng-container>
-</div>
+  </div>
+

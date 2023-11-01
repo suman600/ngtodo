@@ -7,14 +7,13 @@
     <list default="true" id="d1d49c1a-c5d5-4be6-ae35-eeb7c850086f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/components/todo-list/todo-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/todo-list/todo-list.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/components/todo-list/todo-list.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/todo-list/todo-list.component.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/components/todo-list/todo-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/todo-list/todo-list.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/todo-view/todo-view.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/todo-view/todo-view.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/todo-view/todo-view.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/todo-view/todo-view.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/todo-view/todo-view.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/todo-view/todo-view.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/service/todo.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/service/todo.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +82,12 @@
       <workItem from="1694413445103" duration="6398000" />
       <workItem from="1694501661315" duration="4071000" />
       <workItem from="1694582880942" duration="7200000" />
-      <workItem from="1694614293370" duration="10456000" />
+      <workItem from="1694614293370" duration="10555000" />
+      <workItem from="1694672179417" duration="4088000" />
+      <workItem from="1695190298994" duration="15000" />
+      <workItem from="1695623142432" duration="628000" />
+      <workItem from="1698835094667" duration="3554000" />
+      <workItem from="1698840382428" duration="6244000" />
     </task>
     <servers />
   </component>

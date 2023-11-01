@@ -1,6 +1,6 @@
 import { Todo } from "./core/todo.adaper";
 import { ModalService } from "./service/modal.service";
-import { Component } from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {map} from "rxjs";
 import {TodoService} from "./service/todo.service";
 
@@ -9,22 +9,27 @@ import {TodoService} from "./service/todo.service";
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"],
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   editTodo: any;
   viewTodo: any;
   editMode: boolean = false;
-
   tabs
-  activeTab:string = 'All'
+  activeTab:string = 'All';
+  finishAll:boolean = false;
+  hasTodoItem:boolean = false;
 
   constructor(
       private modalService: ModalService,
-      private todoService: TodoService
-  ) {
+      private todoService: TodoService) {
     this.tabs = [
       {text: 'All', icon: 'fas fa-bars'},
       {text: 'Completed', icon: 'fas fa-check'}
     ];
+  }
+  ngOnInit() {
+    this.todoService.getTodos().snapshotChanges().subscribe((data:any)=>{
+      this.hasTodoItem = !!data.length;
+    })
   }
 
   todoItemEvent({ mode, todo }: { mode: string; todo: Todo }) {
@@ -42,7 +47,15 @@ export class AppComponent {
     if(mode =='closeMode'){
       this.editMode = false;
     }
+    if(mode =='checkMode'){
+      // debugger
+      this.viewTodo = todo;
+    }
+    if(mode =='completedMode'){
+      this.viewTodo = todo;
+    }
   }
+
   addTodo() {
     this.modalService.modalState(true, "Add Todo", "Add");
   }
@@ -54,21 +67,7 @@ export class AppComponent {
     this.viewTodo = null
   }
 
-  completeAll(){
-    this.todoService.getTodos().snapshotChanges().pipe(
-      map((changes) =>
-        changes.map((change) => ({
-                  id: change.payload.doc.id,
-                  ...change.payload.doc.data(),
-                }))
-      )
-    )
-    .subscribe((data) => {
-      this.process(data)
-    });
-  }
-
-  process(data:Todo[]){
+  completedProcess(data:Todo[]){
     if(data){
       let filteredTodo : Todo[] = data.filter(item=>{
         return !item.completed
@@ -77,8 +76,47 @@ export class AppComponent {
         item.completed = true
         return item
       })
-      this.todoService.completeAllTodo(allCompleted)
+      this.todoService.completeAllTodo(allCompleted);
+      this.finishAll = false;
     }
   }
+
+  completeAll(){
+    this.finishAll = true;
+    this.todoService.getTodos().snapshotChanges().pipe(
+        map((changes) =>
+            changes.map((change) => ({
+              id: change.payload.doc.id,
+              ...change.payload.doc.data(),
+            }))
+        )
+    )
+    .subscribe((data) => {
+      setTimeout(()=>{
+        this.completedProcess(data);
+        this.finishAll = false;
+      },1000)
+
+    });
+  }
+
+  DeleteAll(){
+    this.finishAll = true;
+    this.todoService.getTodos().snapshotChanges().pipe(
+        map((changes) =>
+            changes.map((change) => ({
+              id: change.payload.doc.id,
+              ...change.payload.doc.data(),
+            }))
+        )
+    )
+    .subscribe((data) => {
+      setTimeout(()=>{
+        this.todoService.deleteAllTodo(data);
+        this.finishAll = false;
+      },1000)
+    });
+  }
+
 
 }

@@ -4,6 +4,7 @@ import {
   AngularFirestore,
   AngularFirestoreCollection,
 } from "@angular/fire/compat/firestore";
+import {update} from "@angular/fire/database";
 
 @Injectable()
 export class TodoService {
@@ -36,11 +37,12 @@ export class TodoService {
 
   completeAllTodo(todos:Todo[]) {
     todos.forEach((todo:Todo)=>{
-      this.todosRef.doc(todo.id).update({
-        title: todo.title,
-        completed: todo.completed,
-      });
+      this.updateTodo(todo);
     })
-
+  }
+  deleteAllTodo(todos:Todo[]) {
+    todos.forEach((todo:Todo)=>{
+      this.deleteTodo(todo);
+    })
   }
 }
