@@ -21,6 +21,7 @@ export class TodoService {
     return this.todosRef;
   }
   createTodo(todo: Todo) {
+    console.log(todo)
     this.todosRef.add({ title: todo.title, completed: todo.completed });
   }
 

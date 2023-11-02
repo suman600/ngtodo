@@ -17,12 +17,17 @@
     <div class="card card--header-action">
         <div class="card-body">
             <div class="action-header">
-                <button class="btn btn-primary" (click)="completeAll()" [disabled]="!hasTodoItem">
-                    <i class="fas fa-check"></i>Complete All
-                </button>
-                <button class="btn btn-danger" (click)="DeleteAll()" [disabled]="!hasTodoItem">
-                    <i class="fas fa-trash"></i>Delete All
-                </button>
+                <ng-container *ngIf="activeTab == 'All'">
+                    <button class="btn btn-primary" (click)="completeAll()" [disabled]="!hasTodoItem">
+                        <i class="fas fa-check"></i>Complete All
+                    </button>
+                </ng-container>
+                <ng-container *ngIf="activeTab == 'Completed'">
+                    <button class="btn btn-danger" (click)="DeleteAll()" [disabled]="!hasCompletedItem">
+                        <i class="fas fa-trash"></i>Delete All
+                    </button>
+                </ng-container>
+
             </div>
         </div>
     </div>
