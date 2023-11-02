@@ -5,7 +5,11 @@
   transition: background .2s ease-in-out;
   height: max-content;
   min-height: 300px;
-
+  @media screen and (max-width: 767px) {
+    min-height: 200px;
+    height: 100%;
+    overflow: auto;
+  }
   &-body {
     padding: 25px;
 
@@ -19,6 +23,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    @media screen and (max-width: 767px) {
+      img{
+        width: 140px;
+      }
+    }
   }
 
   &-footer {
