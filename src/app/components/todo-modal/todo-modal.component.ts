@@ -8,17 +8,17 @@ import {
   OnChanges,
   OnInit,
   Output,
-  SimpleChanges
+  SimpleChanges,
 } from "@angular/core";
-import {FormGroup, FormBuilder, Validators} from "@angular/forms";
-import {Todo} from "../../core/todo.adaper";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { Todo } from "../../core/todo.adaper";
 
 @Component({
   selector: "app-todo-modal",
   templateUrl: "./todo-modal.component.html",
   styleUrls: ["./todo-modal.component.scss"],
 })
-export class TodoModalComponent implements OnInit, OnChanges{
+export class TodoModalComponent implements OnInit, OnChanges {
   show: boolean = false;
   action: string = "";
   title: string = "";
@@ -60,7 +60,7 @@ export class TodoModalComponent implements OnInit, OnChanges{
     this.todoForm.reset();
     this.modalService.modalState(false, "", "");
     this.editMode = false;
-    this.todoClosedEvent.emit({mode: 'closeMode'});
+    this.todoClosedEvent.emit({ mode: "closeMode" });
   }
 
   addTodo() {
@@ -72,34 +72,40 @@ export class TodoModalComponent implements OnInit, OnChanges{
 
   updateTodo() {
     let todo: Todo = {
-      id:this.todo.id,
-      title:this.todoForm.value.todoText,
-      completed:this.todo.completed
-    }
+      id: this.todo.id,
+      title: this.todoForm.value.todoText,
+      completed: this.todo.completed,
+    };
     this.todoSerive.updateTodo(todo);
     this.modalClose();
     this.alertService.showAlert("Todo updated successfully", "success");
-    this.todoUpdatedEvent.emit({mode: 'updateMode', todo});
+    this.todoUpdatedEvent.emit({ mode: "updateMode", todo });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.editMode) {
       this.todoForm = this.fb.group({
-        todoText: [this.todo.title, [Validators.required, Validators.minLength(2), this.customValidateTitle]],
+        todoText: [
+          this.todo.title,
+          [
+            Validators.required,
+            Validators.minLength(2),
+            this.customValidateTitle,
+          ],
+        ],
       });
     }
   }
 
   customValidateTitle = () => {
-    if(this.editMode) {
-      if(this.todoForm.get('todoText')?.value == this.todo.title) {
-        return {invalidTitle: true};
+    if (this.editMode) {
+      if (this.todoForm.get("todoText")?.value == this.todo.title) {
+        return { invalidTitle: true };
       } else {
         return null;
       }
     } else {
       return null;
     }
-  }
+  };
 }
-

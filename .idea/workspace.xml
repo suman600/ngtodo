@@ -7,9 +7,25 @@
     <list default="true" id="d1d49c1a-c5d5-4be6-ae35-eeb7c850086f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/components/todo-list/todo-list.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/todo-list/todo-list.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/todo-list/todo-list.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/todo-list/todo-list.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/todo-list/todo-list.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/todo-list/todo-list.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/todo-modal/todo-modal.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/todo-modal/todo-modal.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/todo-modal/todo-modal.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/todo-modal/todo-modal.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/todo-view/todo-view.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/todo-view/todo-view.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/todo-view/todo-view.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/todo-view/todo-view.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/todo-view/todo-view.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/todo-view/todo-view.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/core/todo.adaper.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/core/todo.adaper.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/service/laoder.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/service/laoder.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/service/todo.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/service/todo.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/loader/loader.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/loader/loader.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/loader/loader.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/loader/loader.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/loader/loader.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/loader/loader.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/todo-alert/todo-alert.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/todo-alert/todo-alert.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environments/environment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/environments/environment.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +61,7 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.tabs&quot;,
     &quot;ts.external.directory.path&quot;: &quot;/Users/testbook/Desktop/ngtodo/node_modules/typescript/lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -85,6 +101,8 @@
       <workItem from="1698835094667" duration="3554000" />
       <workItem from="1698840382428" duration="11627000" />
       <workItem from="1698912185972" duration="3175000" />
+      <workItem from="1698918094091" duration="77000" />
+      <workItem from="1698918661579" duration="298000" />
     </task>
     <servers />
   </component>

@@ -15,8 +15,8 @@ import { TodoModalComponent } from "./components/todo-modal/todo-modal.component
 import { TodoViewComponent } from "./components/todo-view/todo-view.component";
 import { TodoAlertComponent } from "./shared/todo-alert/todo-alert.component";
 import { TodoService } from "./service/todo.service";
-import {LoaderComponent} from "./shared/loader/loader.component";
-import {LoaderService} from "./service/laoder.service";
+import { LoaderComponent } from "./shared/loader/loader.component";
+import { LoaderService } from "./service/laoder.service";
 
 @NgModule({
   declarations: [
@@ -25,7 +25,7 @@ import {LoaderService} from "./service/laoder.service";
     TodoViewComponent,
     TodoModalComponent,
     TodoAlertComponent,
-    LoaderComponent
+    LoaderComponent,
   ],
 
   imports: [

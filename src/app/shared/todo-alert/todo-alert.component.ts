@@ -17,7 +17,7 @@ export class TodoAlertComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscription = this.alertService.getAlert().subscribe((data) => {
-      if (data){
+      if (data) {
         const newAlert: Alert = {
           message: data.message,
           type: data.type,

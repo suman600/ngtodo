@@ -4,14 +4,13 @@ import {
   AngularFirestore,
   AngularFirestoreCollection,
 } from "@angular/fire/compat/firestore";
-import {update} from "@angular/fire/database";
+import { update } from "@angular/fire/database";
 
 @Injectable()
 export class TodoService {
   private API_URL: string = "/todos";
 
   todosRef: AngularFirestoreCollection<Todo>;
-  // todoRef: Observable<any[]>;
 
   constructor(private db: AngularFirestore) {
     this.todosRef = this.db.collection(this.API_URL);
@@ -21,7 +20,7 @@ export class TodoService {
     return this.todosRef;
   }
   createTodo(todo: Todo) {
-    console.log(todo)
+    console.log(todo);
     this.todosRef.add({ title: todo.title, completed: todo.completed });
   }
 
@@ -36,14 +35,14 @@ export class TodoService {
     });
   }
 
-  completeAllTodo(todos:Todo[]) {
-    todos.forEach((todo:Todo)=>{
+  completeAllTodo(todos: Todo[]) {
+    todos.forEach((todo: Todo) => {
       this.updateTodo(todo);
-    })
+    });
   }
-  deleteAllTodo(todos:Todo[]) {
-    todos.forEach((todo:Todo)=>{
+  deleteAllTodo(todos: Todo[]) {
+    todos.forEach((todo: Todo) => {
       this.deleteTodo(todo);
-    })
+    });
   }
 }

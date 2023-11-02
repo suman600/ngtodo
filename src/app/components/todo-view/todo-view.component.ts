@@ -1,8 +1,15 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from "@angular/core";
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+} from "@angular/core";
 import { AlertService } from "src/app/service/alert.service";
 import { TodoService } from "src/app/service/todo.service";
-import {Todo} from "../../core/todo.adaper";
-import {ModalService} from "../../service/modal.service";
+import { Todo } from "../../core/todo.adaper";
+import { ModalService } from "../../service/modal.service";
 
 @Component({
   selector: "app-todo-view",
@@ -13,7 +20,7 @@ export class TodoViewComponent implements OnInit {
   @Input() todo: any;
   @Input() viewMode: any;
   @Output() todoViewEvent = new EventEmitter<any>();
-  @Input() activeTab: string = '';
+  @Input() activeTab: string = "";
   constructor(
     private service: TodoService,
     private alertService: AlertService,
@@ -24,7 +31,7 @@ export class TodoViewComponent implements OnInit {
 
   editTodo(todo: Todo) {
     this.modalService.modalState(true, "Edit Todo", "Update");
-    this.todoViewEvent.emit({mode: 'editMode', todo});
+    this.todoViewEvent.emit({ mode: "editMode", todo });
   }
   deleteTodo(todo: Todo) {
     if (confirm("are you sure want to delete")) {
